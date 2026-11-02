@@ -61,7 +61,7 @@ Rules when editing `.json` files:
 **Example — change the pitch on the Home page.** Open `src/content/profile.json` and change:
 
 ```json
-"pitch": "I design and build electronic hardware, and I know how medical devices are sold and used.",
+"pitch": "From schematic to soldered board: analog, power and embedded electronics.",
 ```
 
 **Example — add a new job.** Open `src/content/experience.json` and copy one `{ ... }` block. Give it a new unique `"id"` and set `"order"` (1 = shown first, newest at the top). The Home page shows the first 4.
