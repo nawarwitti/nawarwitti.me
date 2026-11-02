@@ -5,9 +5,7 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 
 ## 1. Most important (before sharing the link)
 
-- [ ] **Real CV** — export from FlowCV → save as `public/cv.pdf` (replace the placeholder).
-  The current `cv.pdf` is a one-page **placeholder** that says the real CV is coming. Do not share the site before replacing it.
-  **Remove the phone number in FlowCV before exporting** — the CV is public on the site and the phone must stay private.
+- [x] **Real CV** — added as `public/cv.pdf` (FlowCV export without the phone number).
 - [x] **Photo** — removed on request; the site has no photo. (README section 5 explains how to add one later.)
 - [x] **Şam Şerif title confirmed:** "General Manager & Partner" (used on the site).
 - [ ] **Match the title in the CV and on LinkedIn:** the CV says "Partner & Business Development Manager" and LinkedIn says "General Manager". Change both to "General Manager & Partner".

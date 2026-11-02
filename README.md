@@ -144,7 +144,7 @@ The Home page shows the `featured: true` project big, and the next 4 projects (b
 
 ### CV
 
-The file `public/cv.pdf` is now a **placeholder**. To replace it:
+To update the CV later:
 
 1. In FlowCV, **remove your phone number** (the CV is public on the website).
 2. Click **Download** to get your CV as a PDF.
