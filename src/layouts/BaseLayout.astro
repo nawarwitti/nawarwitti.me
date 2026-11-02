@@ -86,6 +86,10 @@ const person = {
     )}
 
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
+    <!-- Marks JS as available before paint, so scroll-reveal hides only when it can show again -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
   </head>
   <body class="flex min-h-screen flex-col">
     <a
@@ -99,5 +103,38 @@ const person = {
       <slot />
     </main>
     <Footer ui={ui} />
+
+    <script>
+      // Scroll reveal: [data-reveal] elements fade up when they enter the screen.
+      // Children of [data-stagger] reveal one after another.
+      document.querySelectorAll<HTMLElement>('[data-stagger]').forEach((group) => {
+        Array.from(group.children).forEach((child, i) => {
+          const el = child as HTMLElement;
+          el.dataset.reveal = '';
+          el.style.setProperty('--reveal-delay', `${Math.min(i, 8) * 90}ms`);
+        });
+      });
+      const items = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
+        );
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('is-visible'));
+      }
+      // Never print half-revealed content.
+      window.addEventListener('beforeprint', () =>
+        items.forEach((el) => el.classList.add('is-visible')),
+      );
+    </script>
   </body>
 </html>

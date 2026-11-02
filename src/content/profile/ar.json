@@ -1,8 +1,8 @@
 {
-  "name": "Nawar Witti",
+  "name": "نوار وتي",
   "title": "مهندس كهرباء وإلكترونيات — أجهزة طبية — مبيعات تقنية",
   "headline": "هندسة كهربائية | أجهزة طبية | مبيعات تقنية وتطوير أعمال | تصميم PCB وأنظمة مدمجة",
-  "pitch": "من المخطط إلى اللوحة الملحومة: إلكترونيات تماثلية، إلكترونيات قدرة، وأنظمة مدمجة.",
+  "pitch": "هندسة، ابتكار، وتطوير أعمال: رؤية شاملة لصناعة الأثر",
   "location": "سكاريا، تركيا",
   "email": "nawarwitti03@gmail.com",
   "linkedin": "https://www.linkedin.com/in/nawar-witti/",
@@ -16,13 +16,22 @@
     "هذا ما أقدّمه: أستطيع تصميم الإلكترونيات وبناءها، وأفهم كيف تُشترى الأجهزة الطبية وتُباع وتُستخدم."
   ],
   "quickFacts": [
-    { "value": "TÜBİTAK 2209-A", "label": "مشروع بحثي مدعوم" },
-    { "value": "منذ 2017", "label": "أكثر من 9 سنوات في قطاع الأجهزة الطبية" },
+    {
+      "value": "TÜBİTAK 2209-A",
+      "label": "مشروع بحثي مدعوم"
+    },
+    {
+      "value": "منذ 2017",
+      "label": "أكثر من 9 سنوات في قطاع الأجهزة الطبية"
+    },
     {
       "value": "دفعة 2027",
       "label": "طالب سنة أخيرة في هندسة الكهرباء والإلكترونيات، جامعة سكاريا للعلوم التطبيقية"
     },
-    { "value": "AR · TR · EN", "label": "العربية، التركية، الإنجليزية" }
+    {
+      "value": "AR · TR · EN",
+      "label": "العربية، التركية، الإنجليزية"
+    }
   ],
   "education": [
     {
@@ -32,14 +41,30 @@
     }
   ],
   "certifications": [
-    { "name": "Introduction to Biomedical Engineering" },
-    { "name": "The Arduino Platform and C Programming" },
+    {
+      "name": "Introduction to Biomedical Engineering"
+    },
+    {
+      "name": "The Arduino Platform and C Programming"
+    },
     {
       "name": "C for Everyone, Part 1: Programming Fundamentals",
       "issuer": "University of California, Santa Cruz"
     },
-    { "name": "Introduction to HTML5" },
-    { "name": "IAB Digital Marketing and Media Foundations" },
-    { "name": "Work Smarter with Microsoft Word", "issuer": "Microsoft" }
-  ]
+    {
+      "name": "Introduction to HTML5"
+    },
+    {
+      "name": "IAB Digital Marketing and Media Foundations"
+    },
+    {
+      "name": "Work Smarter with Microsoft Word",
+      "issuer": "Microsoft"
+    }
+  ],
+  "photo": {
+    "label": "صورة شخصية لنوار وتي",
+    "src": "/photo.jpg",
+    "alt": "صورة شخصية لنوار وتي"
+  }
 }

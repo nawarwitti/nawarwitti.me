@@ -13,9 +13,9 @@ const p = project.data;
 const stats = p.results.slice(0, 3);
 ---
 
-<div>
+<div data-reveal>
   <p class="eyebrow mb-3 text-pulse-text-light">{ui.home.featuredLabel}</p>
-  <article class="flex flex-wrap items-start gap-12 rounded-[12px] border border-card-border bg-card p-6 sm:p-10">
+  <article class="flex flex-wrap items-start gap-12 rounded-[12px] border border-card-border bg-card p-6 transition-shadow duration-300 hover:shadow-[0_24px_50px_-28px_rgb(17_17_17_/_0.45)] sm:p-10">
     <div class="min-w-0 flex-[999_1_460px]">
       <div class="mb-4 flex flex-wrap gap-2">
         <StatusBadge status={p.status} label={ui.projects.status[p.status]} />
@@ -27,7 +27,7 @@ const stats = p.results.slice(0, 3);
       <p class="mt-4 text-[17px] leading-[1.65] text-ink-2">
         {p.summary} {p.context}.
       </p>
-      <ul class="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <ul class="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3" data-stagger>
         {stats.map((s) => (
           <li class="rounded-[8px] bg-paper p-4">
             <p class="font-serif text-[26px] leading-tight lg:text-[30px]">{s.value}</p>
@@ -45,9 +45,10 @@ const stats = p.results.slice(0, 3);
         {p.chain.map((c, i) => (
           <li
             class:list={[
-              'rounded-[6px] px-3.5 py-3 text-[15px]',
+              'chain-step rounded-[6px] px-3.5 py-3 text-[15px]',
               i === p.chain.length - 1 ? 'border-[1.5px] border-pulse' : 'border border-[#D9D5CC]',
             ]}
+            style={`--i:${i}`}
           >
             {c.name} <span class="text-ink-3">— {c.role}</span>
           </li>

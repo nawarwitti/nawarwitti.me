@@ -9,10 +9,10 @@ interface Props {
 const { items, mode = 'full', ui } = Astro.props;
 ---
 
-<ol class="flex flex-col">
+<ol class="flex flex-col" data-stagger>
   {items.map((job) =>
     mode === 'preview' ? (
-      <li class="flex flex-wrap gap-x-8 gap-y-2 border-t border-divider py-6">
+      <li class="flex flex-wrap gap-x-8 gap-y-2 border-t border-divider py-6 transition-colors duration-300 hover:border-pulse">
         <p class="flex-[0_0_200px] font-mono text-sm text-ink-3">{companyDates(job.roles)}</p>
         <div class="min-w-0 flex-[999_1_480px]">
           <h3 class="font-sans text-[19px] font-semibold">

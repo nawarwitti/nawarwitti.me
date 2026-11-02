@@ -153,18 +153,11 @@ To update the CV later:
 
 All "Download CV" buttons (English and Turkish) use this file automatically.
 
-### Photo (optional)
+### Your photo (About page)
 
-The site has no photo right now. If you want one later:
-
-1. Save it as `public/photo.jpg` (portrait, under 300 KB).
-2. In `src/content/profile/en.json` **and** `profile/tr.json`, add this block (for example after `"cv"`):
-
-```json
-"photo": { "label": "Photo", "src": "/photo.jpg", "alt": "Portrait of Nawar Witti" },
-```
-
-The photo then appears next to the headline on Home and on the About page.
+Your photo is `public/photo.jpg` and it is shown on the **About** page only (not on Home).
+To change it, replace `public/photo.jpg` with a new portrait photo (4:5 shape, for example 800 × 1000 pixels, under 300 KB).
+To remove it, delete the `"photo": { ... }` block from `src/content/profile/en.json`, `tr.json` and `ar.json`.
 
 ### Project images
 
@@ -301,7 +294,15 @@ GitHub rebuilds and publishes the site automatically in about 1–2 minutes (wat
 
 ---
 
-## 9. Languages
+## 9. Look and animation
+
+- Dark sections have a circuit-board background with red "signals" running along the traces: `src/components/CircuitBackdrop.astro`.
+- The red pulse lines have a moving "heart monitor" blip, the home headline appears word by word, sections fade up as you scroll, project cards lift on hover, and the signal chain of the featured project lights up stage by stage.
+- All animation styles are at the end of `src/styles/global.css`. Visitors who turn on "reduce motion" in their phone or computer settings see the site without animation.
+
+---
+
+## 10. Languages
 
 - English pages: `https://nawarwitti.me/...`
 - Turkish pages: `https://nawarwitti.me/tr/...`

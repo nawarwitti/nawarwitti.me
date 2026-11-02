@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PulseLine from '../components/PulseLine.astro';
+import CircuitBackdrop from '../components/CircuitBackdrop.astro';
 import Placeholder from '../components/Placeholder.astro';
 import StatusBadge from '../components/StatusBadge.astro';
 import Tag from '../components/Tag.astro';
@@ -28,8 +29,9 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
   locale={locale}
   type="article"
 >
-  <section class="on-dark bg-carbon text-on-dark">
-    <div class="container-page pt-12 pb-14 sm:pt-16">
+  <section class="on-dark relative isolate overflow-hidden bg-carbon text-on-dark">
+    <CircuitBackdrop variant="band" />
+    <div class="container-page relative pt-12 pb-14 sm:pt-16">
       <a
         href={backHref}
         class="mb-8 inline-flex min-h-11 items-center text-[15px] text-on-dark-2 no-underline hover:text-on-dark"
@@ -55,7 +57,7 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
         </p>
       )}
     </div>
-    <PulseLine variant="title" animate />
+    <PulseLine variant="title" animate sweep class="relative" />
   </section>
 
   {(p.problem || p.approach) && (
@@ -82,7 +84,7 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
   {p.chain.length > 0 && (
     <section class="container-page pt-16">
       <h2 class="mb-6 text-[28px] sm:text-[32px]">{ui.project.chain}</h2>
-      <ol class="flex flex-wrap items-stretch gap-2.5">
+      <ol class="flex flex-wrap items-stretch gap-2.5" data-stagger>
         {p.chain.map((c, i) => (
           <li
             class:list={[
@@ -107,7 +109,7 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
       <h2 class="mb-6 text-[28px] sm:text-[32px]">
         {p.status === 'In progress' ? ui.project.results : ui.project.resultsCompleted}
       </h2>
-      <ul class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3.5">
+      <ul class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3.5" data-stagger>
         {p.results.map((r) => (
           <li class="on-dark rounded-[10px] bg-carbon p-6 text-on-dark">
             <p class="font-serif text-[34px] leading-tight sm:text-[40px]">{r.value}</p>
@@ -171,7 +173,7 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
 
   <section class="container-page pt-16">
     <h2 class="mb-6 text-[28px] sm:text-[32px]">{ui.project.gallery}</h2>
-    <ul class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3.5">
+    <ul class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3.5" data-stagger>
       {gallery.map((img) =>
         img.src ? (
           <li>

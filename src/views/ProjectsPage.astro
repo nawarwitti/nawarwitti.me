@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import PulseLine from '../components/PulseLine.astro';
+import CircuitBackdrop from '../components/CircuitBackdrop.astro';
 import { getProjects, getUi, type Locale } from '../lib/content';
 
 interface Props {
@@ -14,12 +15,13 @@ const tags = [...new Set(projects.flatMap((p) => p.data.tags))];
 ---
 
 <BaseLayout title={ui.projects.metaTitle} description={ui.projects.metaDescription} locale={locale}>
-  <section class="on-dark bg-carbon text-on-dark">
-    <div class="container-page pt-16 pb-12 sm:pt-20">
+  <section class="on-dark relative isolate overflow-hidden bg-carbon text-on-dark">
+    <CircuitBackdrop variant="band" />
+    <div class="container-page relative pt-16 pb-12 sm:pt-20">
       <p class="eyebrow mb-4 text-pulse-text-dark">{ui.projects.eyebrow}</p>
       <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">{ui.projects.heading}</h1>
     </div>
-    <PulseLine variant="title" animate />
+    <PulseLine variant="title" animate sweep class="relative" />
   </section>
 
   <section class="container-page pt-12 pb-24">
@@ -39,7 +41,7 @@ const tags = [...new Set(projects.flatMap((p) => p.data.tags))];
       </div>
     </div>
 
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5" data-grid>
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5" data-grid data-stagger>
       {projects.map((p) => (
         <ProjectCard ui={ui} locale={locale} project={p} showTags headingLevel="h2" />
       ))}

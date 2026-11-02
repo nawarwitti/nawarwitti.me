@@ -20,13 +20,13 @@ const links = [
 const isActive = (href: string) => path.startsWith(href);
 ---
 
-<header class="on-dark border-b border-carbon-line bg-carbon">
+<header class="on-dark top-0 z-40 border-b border-carbon-line bg-carbon md:sticky md:bg-carbon/85 md:backdrop-blur-md">
   <div class="container-page flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4">
     <a
       href={localePath(locale, '/')}
       class="flex min-h-11 items-center gap-2.5 font-serif text-[22px] text-on-dark no-underline"
     >
-      <PulseLine variant="logo" />
+      <PulseLine variant="logo" sweep />
       {name}
     </a>
     <nav aria-label={ui.nav.label}>

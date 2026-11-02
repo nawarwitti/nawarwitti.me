@@ -1,7 +1,7 @@
 ---
 import PulseLine from './PulseLine.astro';
-import Placeholder from './Placeholder.astro';
 import QuickFacts from './QuickFacts.astro';
+import CircuitBackdrop from './CircuitBackdrop.astro';
 import { localePath, type Locale, type Profile, type Ui } from '../lib/content';
 
 interface Props {
@@ -10,21 +10,36 @@ interface Props {
   profile: Profile;
 }
 const { ui, locale, profile } = Astro.props;
-// The photo column only appears when profile.photo.src is set.
-const photo = profile.photo?.src ? profile.photo : undefined;
+// Each word animates in on its own (see .hero-word in global.css).
+const words = profile.pitch.split(/\s+/);
 ---
 
-<section class="on-dark bg-carbon text-on-dark">
-  <div class="container-page flex flex-wrap items-center gap-14 pt-16 pb-12 sm:pt-24 sm:pb-16">
-    <div class="max-w-[920px] min-w-0 flex-[999_1_560px]">
-      <p class="eyebrow mb-5 text-pulse-text-dark">{ui.home.eyebrow}</p>
-      <h1 class="text-[40px] leading-[1.08] tracking-[-0.01em] sm:text-[52px] lg:text-[64px]">
-        {profile.pitch}
+<section class="on-dark relative isolate overflow-hidden bg-carbon text-on-dark">
+  <CircuitBackdrop variant="hero" />
+  <div class="container-page relative pt-16 pb-12 sm:pt-24 sm:pb-16">
+    <div class="max-w-[940px]">
+      <p class="eyebrow hero-fade mb-5 text-pulse-text-dark" style="--d: 60ms">
+        {ui.home.eyebrow}
+      </p>
+      <h1 class="text-[40px] leading-[1.12] tracking-[-0.01em] sm:text-[52px] lg:text-[64px]">
+        {words.map((w, i) => (
+          <>
+            <span class="hero-word" style={`--i:${i}`}>
+              {w}
+            </span>{' '}
+          </>
+        ))}
       </h1>
-      <p class="mt-7 max-w-[680px] text-lg leading-relaxed text-on-dark-2 sm:text-[19px]">
+      <p
+        class="hero-fade mt-7 max-w-[680px] text-lg leading-relaxed text-on-dark-2 sm:text-[19px]"
+        style={`--d: ${250 + words.length * 75}ms`}
+      >
         {profile.summary}
       </p>
-      <div class="mt-9 flex flex-wrap gap-3.5">
+      <div
+        class="hero-fade mt-9 flex flex-wrap gap-3.5"
+        style={`--d: ${400 + words.length * 75}ms`}
+      >
         <a href={localePath(locale, '/projects/')} class="btn-primary">
           {ui.home.buttons.projects}
         </a>
@@ -36,21 +51,9 @@ const photo = profile.photo?.src ? profile.photo : undefined;
         </a>
       </div>
     </div>
-    {photo && (
-      <div class="flex flex-[1_1_300px] justify-center">
-        <Placeholder
-          label={photo.label}
-          src={photo.src}
-          alt={photo.alt}
-          tone="dark"
-          width={320}
-          height={380}
-          loading="eager"
-          class="h-[380px] w-full max-w-[320px] rounded-[10px]"
-        />
-      </div>
-    )}
   </div>
-  <PulseLine variant="hero" animate />
-  <QuickFacts facts={profile.quickFacts} />
+  <PulseLine variant="hero" animate sweep class="relative" />
+  <div class="relative">
+    <QuickFacts facts={profile.quickFacts} />
+  </div>
 </section>

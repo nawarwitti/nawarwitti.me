@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PulseLine from '../components/PulseLine.astro';
+import CircuitBackdrop from '../components/CircuitBackdrop.astro';
 import { getUi } from '../lib/content';
 
 // One 404 page for the whole site (GitHub Pages serves a single 404.html), in all languages.
@@ -10,8 +11,9 @@ const ar = await getUi('ar');
 ---
 
 <BaseLayout title={en.notFound.metaTitle} description={en.notFound.metaDescription} locale="en">
-  <section class="on-dark bg-carbon text-on-dark">
-    <div class="container-page pt-20 pb-16">
+  <section class="on-dark relative isolate overflow-hidden bg-carbon text-on-dark">
+    <CircuitBackdrop variant="band" />
+    <div class="container-page relative pt-20 pb-16">
       <p class="eyebrow mb-4 text-pulse-text-dark">{en.notFound.eyebrow}</p>
       <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">{en.notFound.heading}</h1>
       <p lang="tr" class="mt-4 text-lg text-on-dark-2">
@@ -32,7 +34,7 @@ const ar = await getUi('ar');
         </a>
       </div>
     </div>
-    <PulseLine variant="title" animate />
+    <PulseLine variant="title" animate sweep class="relative" />
     <div class="h-16"></div>
   </section>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PulseLine from '../components/PulseLine.astro';
+import CircuitBackdrop from '../components/CircuitBackdrop.astro';
 import Timeline from '../components/Timeline.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import { getExperience, getProfile, getUi, type Locale } from '../lib/content';
@@ -19,14 +20,15 @@ const experience = await getExperience(locale);
   description={ui.experience.metaDescription}
   locale={locale}
 >
-  <section class="on-dark bg-carbon text-on-dark">
-    <div class="container-page pt-16 pb-12 sm:pt-20">
+  <section class="on-dark relative isolate overflow-hidden bg-carbon text-on-dark">
+    <CircuitBackdrop variant="band" />
+    <div class="container-page relative pt-16 pb-12 sm:pt-20">
       <p class="eyebrow mb-4 text-pulse-text-dark">{ui.experience.eyebrow}</p>
       <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">
         {ui.experience.heading}
       </h1>
     </div>
-    <PulseLine variant="title" animate />
+    <PulseLine variant="title" animate sweep class="relative" />
   </section>
 
   <section class="container-page pt-12 pb-24">

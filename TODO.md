@@ -6,11 +6,11 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 ## 1. Most important (before sharing the link)
 
 - [x] **Real CV** — added as `public/cv.pdf` (FlowCV export without the phone number).
-- [x] **Photo** — removed on request; the site has no photo. (README section 5 explains how to add one later.)
+- [x] **Photo** — shown on the About page only (`public/photo.jpg`).
 - [x] **Şam Şerif title confirmed:** "General Manager & Partner" (used on the site).
 - [ ] **Match the title in the CV and on LinkedIn:** the CV says "Partner & Business Development Manager" and LinkedIn says "General Manager". Change both to "General Manager & Partner".
 - [ ] **Proofread the Turkish version** (`/tr/`). The Turkish text was translated from the English plan — check it reads naturally to you, especially technical terms and job titles (`src/content/*/tr.json`, `src/content/projects/tr/`).
-- [ ] **Proofread the Arabic version** (`/ar/`). Check the wording, job titles and month names (`src/content/*/ar.json`, `src/content/projects/ar/`). The name in the header stays "Nawar Witti" in Latin letters; page titles use "نوار ويتي" — change it if you prefer another spelling.
+- [ ] **Proofread the Arabic version** (`/ar/`). Check the wording, job titles and month names (`src/content/*/ar.json`, `src/content/projects/ar/`). Your Arabic name is written "نوار وتي" (header, page titles, footer).
 - [x] **Pushed to GitHub, Pages + custom domain + HTTPS on.** After each change run `git push`.
 
 ## 2. Project images
@@ -65,7 +65,7 @@ Put each image once in `public/`, then add its `src:` line in **both** language 
 
 ## 5. Phase 2 (later, from the plan)
 
-- [x] Turkish version at `/tr/` (README section 9).
+- [x] Turkish version at `/tr/` (README section 10).
 - [x] Arabic version at `/ar/`.
 - [ ] `/notes` section for short technical write-ups or explainer videos.
 - [ ] Optional full-dark theme toggle.

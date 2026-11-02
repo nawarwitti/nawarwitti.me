@@ -1,0 +1,128 @@
+---
+// Decorative background for dark sections: a faint PCB dot grid, copper traces with pads,
+// an IC footprint, a soft red glow, and red "signals" that run along some traces.
+// Purely decorative (aria-hidden); the signals stop for prefers-reduced-motion.
+interface Props {
+  /** 'hero' = home hero; 'band' = shorter page headers and dark bands. */
+  variant?: 'hero' | 'band';
+}
+const { variant = 'hero' } = Astro.props;
+const uid = `cb${Math.random().toString(36).slice(2, 8)}`;
+
+// Traces drawn on a 1440×720 board, mostly on the far side from the text.
+const traces = [
+  'M1440 90 H1180 L1120 150 H900 L860 190 H760',
+  'M1440 210 H1240 L1190 260 H1010 L960 310 V420 L920 460 H820',
+  'M1440 330 H1300 L1260 370 V520 L1220 560 H1080',
+  'M1020 0 V70 L1060 110 H1110',
+  'M1440 470 H1350 L1310 510 V640 L1270 680 H1100 L1060 720',
+  'M640 720 V650 L680 610 H840 L880 570 H1000',
+  'M1300 0 V40 L1340 80 H1440',
+  'M1190 720 V600 L1150 560',
+];
+// [trace index, duration s, delay s] — which traces carry a moving signal.
+const signals: [number, number, number][] = [
+  [0, 6.5, 0],
+  [1, 8, 1.6],
+  [2, 7, 3.2],
+  [4, 9, 0.8],
+  [5, 7.5, 4.4],
+];
+const pads = [
+  [760, 190],
+  [820, 460],
+  [1080, 560],
+  [1110, 110],
+  [1000, 570],
+  [1150, 560],
+];
+const pins = Array.from({ length: 6 }, (_, i) => 1100 + i * 15);
+---
+
+<div
+  class:list={['circuit-backdrop pointer-events-none absolute inset-0 overflow-hidden', variant]}
+  aria-hidden="true"
+>
+  <svg
+    class="absolute inset-0 h-full w-full"
+    viewBox="0 0 1440 720"
+    preserveAspectRatio="xMaxYMid slice"
+    focusable="false"
+  >
+    <defs>
+      <pattern id={`${uid}-dots`} width="24" height="24" patternUnits="userSpaceOnUse">
+        <circle cx="12" cy="12" r="1" fill="#F5F3EF" opacity="0.07"></circle>
+      </pattern>
+    </defs>
+    <rect width="1440" height="720" fill={`url(#${uid}-dots)`}></rect>
+
+    <g fill="none" stroke="#3A3A35" stroke-width="1.6" stroke-linejoin="round" opacity="0.9">
+      {traces.map((d) => (
+        <path d={d} />
+      ))}
+    </g>
+    <g fill="#111111" stroke="#4A4A44" stroke-width="1.6">
+      {pads.map(([x, y]) => (
+        <circle cx={x} cy={y} r="4.5" />
+      ))}
+    </g>
+    <g stroke="#3A3A35" stroke-width="1.6">
+      <rect x="1086" y="388" width="96" height="62" rx="4" fill="#161615"></rect>
+      {pins.map((x) => (
+        <line x1={x} y1="378" x2={x} y2="388" />
+      ))}
+      {pins.map((x) => (
+        <line x1={x} y1="450" x2={x} y2="460" />
+      ))}
+    </g>
+
+    <g fill="none" stroke-width="2.2" stroke-linecap="round" class="circuit-signals">
+      {signals.map(([i, dur, delay]) => (
+        <path
+          d={traces[i]}
+          pathLength="100"
+          class="circuit-signal"
+          style={`animation-duration:${dur}s;animation-delay:${delay}s`}
+        />
+      ))}
+    </g>
+  </svg>
+</div>
+
+<style>
+  .circuit-backdrop {
+    /* Lifts the flat black: a soft warm-grey top light plus a faint red glow. */
+    background:
+      radial-gradient(ellipse 70% 60% at 85% 15%, rgb(215 38 61 / 0.13), transparent 70%),
+      radial-gradient(ellipse 90% 80% at 50% -10%, #1f1f1d, transparent 70%);
+    /* Fade the pattern out behind the text side. */
+    mask-image: linear-gradient(to right, rgb(0 0 0 / 0.25) 0%, #000 55%);
+  }
+  .circuit-backdrop.band {
+    mask-image: linear-gradient(to right, rgb(0 0 0 / 0.2) 0%, #000 65%);
+  }
+  :global([dir='rtl']) .circuit-backdrop {
+    transform: scaleX(-1);
+  }
+  .circuit-signal {
+    stroke: var(--color-pulse-text-dark);
+    stroke-dasharray: 7 93;
+    stroke-dashoffset: 100;
+    filter: drop-shadow(0 0 4px rgb(240 69 90 / 0.85));
+    animation-name: circuit-flow;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    opacity: 0.9;
+  }
+  @keyframes circuit-flow {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .circuit-signal {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>

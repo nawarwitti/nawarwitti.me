@@ -6,6 +6,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import Timeline from '../components/Timeline.astro';
 import SkillGroup from '../components/SkillGroup.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import CircuitBackdrop from '../components/CircuitBackdrop.astro';
 import {
   getExperience,
   getProfile,
@@ -36,13 +37,13 @@ const selected = projects.filter((p) => p.slug !== featured.slug).slice(0, 4);
   <section id="projects" class="container-page pt-20 pb-10 sm:pt-26">
     <FeaturedProject ui={ui} locale={locale} project={featured} />
 
-    <div class="mt-20 mb-7 flex flex-wrap items-baseline justify-between gap-4">
+    <div class="mt-20 mb-7 flex flex-wrap items-baseline justify-between gap-4" data-reveal>
       <h2 class="text-[30px] sm:text-[34px]">{ui.home.selectedHeading}</h2>
       <a href={localePath(locale, '/projects/')} class="link-light text-base">
         {ui.home.allProjectsLink}
       </a>
     </div>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5" data-stagger>
       {selected.map((p) => (
         <ProjectCard ui={ui} locale={locale} project={p} />
       ))}
@@ -50,7 +51,7 @@ const selected = projects.filter((p) => p.slug !== featured.slug).slice(0, 4);
   </section>
 
   <section id="experience" class="container-page pt-16 pb-24">
-    <div class="mb-8 flex flex-wrap items-baseline justify-between gap-4">
+    <div class="mb-8 flex flex-wrap items-baseline justify-between gap-4" data-reveal>
       <h2 class="text-[30px] sm:text-[34px]">{ui.home.experienceHeading}</h2>
       <a href={localePath(locale, '/experience/')} class="link-light text-base">
         {ui.home.experienceLink}
@@ -59,8 +60,13 @@ const selected = projects.filter((p) => p.slug !== featured.slug).slice(0, 4);
     <Timeline items={experience.slice(0, 4)} mode="preview" ui={ui} />
   </section>
 
-  <section id="skills" aria-label={ui.home.skillsHeading} class="on-dark bg-carbon text-on-dark">
-    <div class="container-page grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-14 py-24">
+  <section
+    id="skills"
+    aria-label={ui.home.skillsHeading}
+    class="on-dark relative isolate overflow-hidden bg-carbon text-on-dark"
+  >
+    <CircuitBackdrop variant="band" />
+    <div class="container-page relative grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-14 py-24">
       <SkillGroup group={skills.engineering} />
       <SkillGroup group={skills.business} />
     </div>

@@ -2,7 +2,7 @@
   "name": "Nawar Witti",
   "title": "Elektrik-Elektronik Mühendisi — Tıbbi Cihazlar — Teknik Satış",
   "headline": "Elektrik Mühendisliği | Tıbbi Cihazlar | Teknik Satış ve İş Geliştirme | PCB Tasarımı ve Gömülü Sistemler",
-  "pitch": "Şemadan lehimlenmiş karta: analog, güç ve gömülü elektronik.",
+  "pitch": "Mühendislik, inovasyon ve iş geliştirme: etki yaratmak için bütüncül bir vizyon",
   "location": "Sakarya, Türkiye",
   "email": "nawarwitti03@gmail.com",
   "linkedin": "https://www.linkedin.com/in/nawar-witti/",
@@ -16,13 +16,22 @@
     "Sunduğum şey bu: Elektroniği tasarlayıp kurabilirim ve tıbbi cihazların nasıl satın alındığını, satıldığını ve kullanıldığını bilirim."
   ],
   "quickFacts": [
-    { "value": "TÜBİTAK 2209-A", "label": "Destekli araştırma projesi" },
-    { "value": "2017'den beri", "label": "Tıbbi cihaz sektöründe 9+ yıl" },
+    {
+      "value": "TÜBİTAK 2209-A",
+      "label": "Destekli araştırma projesi"
+    },
+    {
+      "value": "2017'den beri",
+      "label": "Tıbbi cihaz sektöründe 9+ yıl"
+    },
     {
       "value": "Mezuniyet 2027",
       "label": "Son sınıf EEM öğrencisi, Sakarya Uygulamalı Bilimler Üniversitesi"
     },
-    { "value": "AR · TR · EN", "label": "Arapça, Türkçe, İngilizce" }
+    {
+      "value": "AR · TR · EN",
+      "label": "Arapça, Türkçe, İngilizce"
+    }
   ],
   "education": [
     {
@@ -32,14 +41,30 @@
     }
   ],
   "certifications": [
-    { "name": "Introduction to Biomedical Engineering" },
-    { "name": "The Arduino Platform and C Programming" },
+    {
+      "name": "Introduction to Biomedical Engineering"
+    },
+    {
+      "name": "The Arduino Platform and C Programming"
+    },
     {
       "name": "C for Everyone, Part 1: Programming Fundamentals",
       "issuer": "University of California, Santa Cruz"
     },
-    { "name": "Introduction to HTML5" },
-    { "name": "IAB Digital Marketing and Media Foundations" },
-    { "name": "Work Smarter with Microsoft Word", "issuer": "Microsoft" }
-  ]
+    {
+      "name": "Introduction to HTML5"
+    },
+    {
+      "name": "IAB Digital Marketing and Media Foundations"
+    },
+    {
+      "name": "Work Smarter with Microsoft Word",
+      "issuer": "Microsoft"
+    }
+  ],
+  "photo": {
+    "label": "Nawar Witti portresi",
+    "src": "/photo.jpg",
+    "alt": "Nawar Witti portresi"
+  }
 }

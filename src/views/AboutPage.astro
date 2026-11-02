@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PulseLine from '../components/PulseLine.astro';
+import CircuitBackdrop from '../components/CircuitBackdrop.astro';
 import Placeholder from '../components/Placeholder.astro';
 import SkillGroup from '../components/SkillGroup.astro';
 import ContactCTA from '../components/ContactCTA.astro';
@@ -17,32 +18,39 @@ const photo = profile.photo?.src ? profile.photo : undefined;
 ---
 
 <BaseLayout title={ui.about.metaTitle} description={ui.about.metaDescription} locale={locale}>
-  <section class="on-dark bg-carbon text-on-dark">
-    <div class="container-page pt-16 pb-12 sm:pt-20">
+  <section class="on-dark relative isolate overflow-hidden bg-carbon text-on-dark">
+    <CircuitBackdrop variant="band" />
+    <div class="container-page relative pt-16 pb-12 sm:pt-20">
       <p class="eyebrow mb-4 text-pulse-text-dark">{ui.about.eyebrow}</p>
       <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">{ui.about.heading}</h1>
     </div>
-    <PulseLine variant="title" animate />
+    <PulseLine variant="title" animate sweep class="relative" />
   </section>
 
-  <section class="container-page flex flex-wrap gap-12 pt-14">
-    <div class="flex max-w-[760px] min-w-0 flex-[999_1_480px] flex-col gap-5">
+  <section class="container-page flex flex-wrap items-start gap-12 pt-14">
+    {photo && (
+      <div class="flex flex-[1_1_260px] justify-center lg:order-last lg:justify-start" data-reveal>
+        <figure class="group relative w-full max-w-[300px]">
+          <span
+            class="absolute inset-0 translate-x-3 translate-y-3 rounded-[12px] border-2 border-pulse transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4 rtl:-translate-x-3 rtl:group-hover:-translate-x-4 motion-reduce:transition-none"
+            aria-hidden="true"
+          ></span>
+          <Placeholder
+            label={photo.label}
+            src={photo.src}
+            alt={photo.alt}
+            width={300}
+            height={375}
+            class="relative aspect-[4/5] h-auto w-full rounded-[12px]"
+          />
+        </figure>
+      </div>
+    )}
+    <div class="flex max-w-[760px] min-w-0 flex-[999_1_480px] flex-col gap-5" data-stagger>
       {profile.about.map((para) => (
         <p class="text-lg leading-[1.7] text-ink-2">{para}</p>
       ))}
     </div>
-    {photo && (
-      <div class="flex-[1_1_260px]">
-        <Placeholder
-          label={photo.label}
-          src={photo.src}
-          alt={photo.alt}
-          width={300}
-          height={360}
-          class="h-[360px] w-full max-w-[300px] rounded-[10px]"
-        />
-      </div>
-    )}
   </section>
 
   <section class="container-page pt-16">

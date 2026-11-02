@@ -5,10 +5,13 @@ interface Props {
 const { facts } = Astro.props;
 ---
 
-<div class="border-t border-carbon-line">
-  <ul class="container-page grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6 pt-8 pb-10">
+<div class="border-t border-carbon-line bg-carbon/60 backdrop-blur-[2px]">
+  <ul
+    class="container-page grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6 pt-8 pb-10"
+    data-stagger
+  >
     {facts.map((f) => (
-      <li>
+      <li class="border-s-2 border-pulse/70 ps-4">
         <p class="font-serif text-[26px]">{f.value}</p>
         <p class="mt-1.5 text-sm text-on-dark-3">{f.label}</p>
       </li>

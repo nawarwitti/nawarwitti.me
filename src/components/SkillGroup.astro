@@ -18,14 +18,14 @@ const Heading = headingLevel;
     {group.label}
   </p>
   <Heading class="mb-6 text-[28px] leading-tight sm:text-[32px]">{group.heading}</Heading>
-  <ul class="flex flex-wrap gap-2.5">
+  <ul class="flex flex-wrap gap-2.5" data-stagger>
     {group.items.map((s) => (
       <li
         class:list={[
-          'rounded-full border px-3.5 py-2 text-[15px]',
+          'rounded-full border px-3.5 py-2 text-[15px] transition duration-200 hover:-translate-y-0.5 motion-reduce:hover:translate-y-0',
           tone === 'dark'
-            ? 'border-[#3A3A36] text-[#E4E2DC]'
-            : 'border-card-border bg-card text-ink-2',
+            ? 'border-[#3A3A36] text-[#E4E2DC] hover:border-pulse-text-dark hover:bg-pulse/10 hover:text-on-dark'
+            : 'border-card-border bg-card text-ink-2 hover:border-pulse-text-light hover:text-ink',
         ]}
       >
         {s}
