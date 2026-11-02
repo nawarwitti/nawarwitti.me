@@ -7,12 +7,19 @@ context: GP Tech internship
 tags: [Reverse Engineering, Proteus]
 order: 3
 cover:
-  label: 'TODO: HKS-DC028 module photo (public/projects/gp-tech/hks-dc028.jpg)'
-  alt: HKS-DC028 voltmeter/ammeter module
+  label: 'The HKS-DC028 module'
+  src: /projects/gp-tech/hks-dc028.jpg
+  alt: 'HKS-DC028 voltmeter/ammeter module, circuit board side'
 whatIDid:
   - 'Reverse-engineered a commercial voltmeter/ammeter module (HKS-DC028): identified the microcontroller, resistors, capacitors, op-amp and voltage regulator.'
   - Redrew the full schematic in Proteus.
 tools: [HKS-DC028, Proteus]
 gallery:
-  - label: 'TODO: redrawn Proteus schematic (public/projects/gp-tech/hks-dc028-schematic.png)'
+  - label: 'The HKS-DC028 voltmeter/ammeter module'
+    src: /projects/gp-tech/hks-dc028.jpg
+    alt: 'HKS-DC028 voltmeter/ammeter module, circuit board side'
+  - label: 'Its schematic, redrawn in Proteus'
+    src: /projects/gp-tech/hks-dc028-schematic.png
+    alt: 'Schematic of the HKS-DC028 module redrawn in Proteus'
+    fit: contain
 ---

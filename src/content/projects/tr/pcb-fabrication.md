@@ -7,10 +7,19 @@ context: GP Tech stajı
 tags: [PCB, EasyEDA, Üretim]
 order: 4
 cover:
-  label: 'TODO: aşındırılmış bakır kart fotoğrafı (public/projects/gp-tech/pcb-etching.jpg)'
-  alt: Elle aşındırılmış PCB
+  label: 'Tamamlanan kart'
+  src: /projects/gp-tech/pcb-assembled.jpg
+  alt: 'Delme ve lehimlemeden sonra elle üretilmiş kart; bileşenler ve kırmızı atlama kabloları'
 whatIDid:
   - EasyEDA'da bir PCB tasarladım.
   - 'Şirket içinde ürettim: toner transferi, asitle aşındırma, delme ve lehimleme.'
 tools: [EasyEDA]
+gallery:
+  - label: "EasyEDA'da PCB yerleşim çalışması"
+    src: /projects/gp-tech/pcb-easyeda.jpg
+    alt: "Monitörde EasyEDA'da açık PCB yerleşimi"
+    fit: contain
+  - label: 'Tamamlanan kart: delikler açıldı, atlama kabloları ve parçalar elle lehimlendi'
+    src: /projects/gp-tech/pcb-assembled.jpg
+    alt: 'Delme ve lehimlemeden sonra elle üretilmiş kart; bileşenler ve kırmızı atlama kabloları'
 ---

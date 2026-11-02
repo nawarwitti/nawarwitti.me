@@ -26,23 +26,23 @@ Put each image once in `public/`, then add its `src:` line in **both** language 
 
 ### P2 — Buck converter & measurement circuits (`buck-converter.md`)
 
-- [ ] Buck converter photo or schematic → `public/projects/gp-tech/buck-converter.jpg` (cover)
-- [ ] Buck schematic → `public/projects/gp-tech/buck-schematic.jpg`
+- [x] Op-amp circuits on breadboard, LTspice OP747 simulation, Proteus voltage divider (from the internship notebook)
+- [ ] Buck converter schematic → `public/projects/gp-tech/buck-schematic.jpg`
 - [ ] XL4016 module photo → `public/projects/gp-tech/xl4016.jpg`
-- [ ] Measurement circuit on breadboard → `public/projects/gp-tech/measurement.jpg`
 
 ### P3 — Voltmeter/ammeter reverse engineering (`voltmeter-reverse-engineering.md`)
 
-- [ ] HKS-DC028 module photo → `public/projects/gp-tech/hks-dc028.jpg` (cover)
-- [ ] Redrawn Proteus schematic → `public/projects/gp-tech/hks-dc028-schematic.png`
+- [x] HKS-DC028 module photo + redrawn Proteus schematic (from the internship notebook)
 
 ### P4 — In-house PCB (`pcb-fabrication.md`)
 
-- [ ] Etched copper board photo → `public/projects/gp-tech/pcb-etching.jpg`
+- [x] Finished board + EasyEDA layout photo (from the internship notebook)
+- [ ] Optional: photo of the etched copper side
 
 ### P5 — Transistor H-bridge (`h-bridge.md`)
 
-- [ ] H-bridge on breadboard → `public/projects/gp-tech/h-bridge.jpg`
+- [x] Proteus schematic (from the internship notebook)
+- [ ] Optional: photo of the H-bridge on the breadboard
 
 ### P6 — Physiological signal simulation system (`biosignal-simulator.md`)
 

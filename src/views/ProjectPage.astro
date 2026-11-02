@@ -172,18 +172,35 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
   <section class="container-page pt-16">
     <h2 class="mb-6 text-[28px] sm:text-[32px]">{ui.project.gallery}</h2>
     <ul class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3.5">
-      {gallery.map((img) => (
-        <li>
-          <Placeholder
-            label={img.label}
-            src={img.src}
-            alt={img.alt}
-            width={400}
-            height={220}
-            class="h-[220px] w-full rounded-[10px]"
-          />
-        </li>
-      ))}
+      {gallery.map((img) =>
+        img.src ? (
+          <li>
+            <figure>
+              <a href={img.src} target="_blank" rel="noopener" class="block">
+                <Placeholder
+                  label={img.label}
+                  src={img.src}
+                  alt={img.alt}
+                  fit={img.fit}
+                  width={400}
+                  height={220}
+                  class="h-[220px] w-full rounded-[10px] border border-card-border transition-colors hover:border-ink-3"
+                />
+              </a>
+              <figcaption class="mt-2 text-sm leading-snug text-ink-2">{img.label}</figcaption>
+            </figure>
+          </li>
+        ) : (
+          <li>
+            <Placeholder
+              label={img.label}
+              width={400}
+              height={220}
+              class="h-[220px] w-full rounded-[10px]"
+            />
+          </li>
+        ),
+      )}
     </ul>
   </section>
 

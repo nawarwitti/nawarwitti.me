@@ -7,12 +7,19 @@ context: GP Tech stajı
 tags: [Tersine Mühendislik, Proteus]
 order: 3
 cover:
-  label: 'TODO: HKS-DC028 modül fotoğrafı (public/projects/gp-tech/hks-dc028.jpg)'
-  alt: HKS-DC028 voltmetre/ampermetre modülü
+  label: 'HKS-DC028 modülü'
+  src: /projects/gp-tech/hks-dc028.jpg
+  alt: 'HKS-DC028 voltmetre/ampermetre modülü, devre kartı tarafı'
 whatIDid:
   - "Ticari bir voltmetre/ampermetre modülünü (HKS-DC028) tersine mühendislikle inceledim: mikrodenetleyiciyi, dirençleri, kondansatörleri, op-amp'ı ve voltaj regülatörünü belirledim."
   - Tam şemayı Proteus'ta yeniden çizdim.
 tools: [HKS-DC028, Proteus]
 gallery:
-  - label: 'TODO: yeniden çizilen Proteus şeması (public/projects/gp-tech/hks-dc028-schematic.png)'
+  - label: 'HKS-DC028 voltmetre/ampermetre modülü'
+    src: /projects/gp-tech/hks-dc028.jpg
+    alt: 'HKS-DC028 voltmetre/ampermetre modülü, devre kartı tarafı'
+  - label: "Proteus'ta yeniden çizilen şeması"
+    src: /projects/gp-tech/hks-dc028-schematic.png
+    alt: "HKS-DC028 modülünün Proteus'ta yeniden çizilen şeması"
+    fit: contain
 ---

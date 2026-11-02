@@ -10,6 +10,8 @@ const image = z.object({
   label: z.string(),
   src: z.string().optional(),
   alt: z.string().optional(),
+  // 'contain' shows the whole image without cropping — use it for schematics and screenshots.
+  fit: z.enum(['cover', 'contain']).optional(),
 });
 
 // Projects: src/content/projects/en/<slug>.md and src/content/projects/tr/<slug>.md

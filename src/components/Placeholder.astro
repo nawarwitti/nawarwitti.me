@@ -9,6 +9,8 @@ interface Props {
   width?: number;
   height?: number;
   loading?: 'lazy' | 'eager';
+  /** 'contain' shows the whole image (use for schematics); 'cover' fills and crops (photos). */
+  fit?: 'cover' | 'contain';
 }
 const {
   label,
@@ -19,6 +21,7 @@ const {
   width,
   height,
   loading = 'lazy',
+  fit = 'cover',
 } = Astro.props;
 ---
 
@@ -30,7 +33,7 @@ const {
     height={height}
     loading={loading}
     decoding="async"
-    class:list={['object-cover', className]}
+    class:list={[fit === 'contain' ? 'bg-card object-contain p-2' : 'object-cover', className]}
   />
 ) : (
   <div
