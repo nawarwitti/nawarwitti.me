@@ -10,7 +10,8 @@
     "website": "https://nawarwitti.me",
     "cv": "/cv.pdf",
     "photo": {
-      "label": "TODO: professional photo (public/photo.jpg)",
+      "label": "Professional photo",
+      "src": "/photo.jpg",
       "alt": "Portrait of Nawar Witti"
     },
     "summary": "Final-year Electrical & Electronics Engineering student focused on analog circuit design, PCB prototyping and embedded systems, leading a TÜBİTAK-funded biosignal device project. Partner in a medical devices trading company since 2017.",

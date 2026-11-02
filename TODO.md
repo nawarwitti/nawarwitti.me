@@ -7,8 +7,8 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 
 - [ ] **Real CV** — export from FlowCV → save as `public/cv.pdf` (replace the placeholder).
   The current `cv.pdf` is a one-page **placeholder** that says the real CV is coming. Do not share the site before replacing it.
-- [ ] **Professional photo** — `public/photo.jpg` (same as the CV photo is fine), then add `"src": "/photo.jpg"` to `photo` in `src/content/profile.json`.
-  Shown on: Home (hero) and About.
+  **Remove the phone number in FlowCV before exporting** — the CV is public on the site and the phone must stay private.
+- [x] **Professional photo** — added as `public/photo.jpg` (Home hero and About).
 - [ ] **Confirm your Şam Şerif title.** The CV says "Partner & Business Development Manager", LinkedIn says "General Manager". The site now uses **"General Manager & Partner"** (`src/content/experience.json`). Change it there if you prefer another title.
 - [ ] **Push to your GitHub and turn on Pages + HTTPS** (README section 6).
 
