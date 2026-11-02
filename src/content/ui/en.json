@@ -1,0 +1,90 @@
+{
+  "lang": "en",
+  "skipLink": "Skip to content",
+  "nav": {
+    "label": "Main",
+    "projects": "Projects",
+    "experience": "Experience",
+    "about": "About",
+    "contact": "Contact",
+    "cv": "Download CV"
+  },
+  "footer": {
+    "copyright": "© {year} Nawar Witti",
+    "domain": "nawarwitti.me"
+  },
+  "home": {
+    "metaTitle": "Nawar Witti — Electrical & Electronics Engineer · Medical Devices",
+    "metaDescription": "Electronics engineer who understands medical hardware and the medical devices market. Analog circuits, PCB prototyping, embedded systems — and 9+ years in medical devices trading.",
+    "eyebrow": "Electrical & Electronics Engineer — Medical Devices — Technical Sales",
+    "buttons": { "projects": "View projects", "cv": "Download CV", "linkedin": "LinkedIn" },
+    "featuredLabel": "Featured project",
+    "signalChainLabel": "Signal chain",
+    "caseStudyLink": "Read the case study →",
+    "selectedHeading": "More from the lab",
+    "allProjectsLink": "See all projects →",
+    "experienceHeading": "Experience",
+    "experienceLink": "Full experience →",
+    "skillsHeading": "Skills"
+  },
+  "contact": {
+    "heading": "Let’s build something.",
+    "text": "Open to roles in electrical engineering, technical sales and product development — especially in medical and rail hardware.",
+    "linkedin": "LinkedIn",
+    "metaTitle": "Contact — Nawar Witti",
+    "metaDescription": "Contact Nawar Witti by email or LinkedIn.",
+    "pageEyebrow": "Contact",
+    "emailLabel": "Email",
+    "linkedinLabel": "LinkedIn",
+    "locationLabel": "Location",
+    "cvLabel": "CV"
+  },
+  "projects": {
+    "metaTitle": "Projects — Nawar Witti",
+    "metaDescription": "Electronics projects by Nawar Witti: biosignal acquisition, power electronics, PCB fabrication, reverse engineering and motor control.",
+    "eyebrow": "Projects",
+    "heading": "Hardware I have designed, built and tested",
+    "filterLabel": "Filter by tag",
+    "filterAll": "All",
+    "noneFound": "No projects with this tag.",
+    "countShown": "{n} shown",
+    "status": { "Completed": "Completed", "In progress": "In progress" }
+  },
+  "project": {
+    "back": "← All projects",
+    "backHome": "← Back to home",
+    "problem": "The problem",
+    "approach": "The idea",
+    "chain": "Signal chain",
+    "whatIDid": "What I did",
+    "results": "Results so far",
+    "resultsCompleted": "Results",
+    "tools": "Tools and parts",
+    "gallery": "Gallery",
+    "nextSteps": "Next steps",
+    "dateLabel": "Date"
+  },
+  "experience": {
+    "metaTitle": "Experience — Nawar Witti",
+    "metaDescription": "Experience of Nawar Witti: electrical engineering internships at ÖzBir Rail and GP Tech, and 9+ years in medical devices trading at Şam Şerif.",
+    "eyebrow": "Experience",
+    "heading": "Engineering and the medical devices business",
+    "relatedProjects": "Related projects"
+  },
+  "about": {
+    "metaTitle": "About — Nawar Witti",
+    "metaDescription": "About Nawar Witti: electrical & electronics engineering student and partner in a medical devices trading company since 2017.",
+    "eyebrow": "About",
+    "heading": "An engineer who also knows the market",
+    "skillsHeading": "Skills",
+    "educationHeading": "Education",
+    "certificationsHeading": "Certifications"
+  },
+  "notFound": {
+    "metaTitle": "Page not found — Nawar Witti",
+    "metaDescription": "This page does not exist.",
+    "eyebrow": "404",
+    "heading": "Flatline. This page does not exist.",
+    "link": "← Back to home"
+  }
+}

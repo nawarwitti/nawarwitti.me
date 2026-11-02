@@ -1,0 +1,16 @@
+---
+import type { Ui } from '../lib/content';
+
+interface Props {
+  ui: Ui;
+}
+const { ui } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="on-dark bg-carbon text-on-dark-3">
+  <div class="container-page flex flex-wrap justify-between gap-3 border-t border-carbon-line py-6 text-sm">
+    <span>{ui.footer.copyright.replace('{year}', String(year))}</span>
+    <span class="font-mono">{ui.footer.domain}</span>
+  </div>
+</footer>

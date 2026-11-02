@@ -1,0 +1,17 @@
+---
+interface Props {
+  tone?: 'light' | 'dark';
+  size?: 'sm' | 'md';
+}
+const { tone = 'light', size = 'sm' } = Astro.props;
+---
+
+<span
+  class:list={[
+    'inline-block rounded-[4px] font-mono',
+    size === 'sm' ? 'px-2.5 py-1 text-xs' : 'px-2.5 py-1.5 text-[13px]',
+    tone === 'dark' ? 'bg-carbon-line text-[#E4E2DC]' : 'bg-chip text-chip-text',
+  ]}
+>
+  <slot />
+</span>

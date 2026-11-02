@@ -1,0 +1,21 @@
+---
+interface Props {
+  status: 'Completed' | 'In progress';
+  label: string;
+  tone?: 'light' | 'dark';
+}
+const { status, label, tone = 'light' } = Astro.props;
+const inProgress = status === 'In progress';
+---
+
+<span
+  class:list={[
+    'inline-block rounded-[4px] px-2.5 py-1 font-mono text-xs',
+    inProgress && tone === 'light' && 'bg-pulse-tint text-pulse-deep',
+    inProgress && tone === 'dark' && 'bg-[#3A1218] text-[#FFC9CF]',
+    !inProgress && tone === 'light' && 'border border-card-border bg-card text-chip-text',
+    !inProgress && tone === 'dark' && 'border border-outline-dark text-on-dark-2',
+  ]}
+>
+  {label}
+</span>

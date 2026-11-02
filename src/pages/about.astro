@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PulseLine from '../components/PulseLine.astro';
+import Placeholder from '../components/Placeholder.astro';
+import SkillGroup from '../components/SkillGroup.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { getProfile, getSkills, getUi } from '../lib/content';
+
+const ui = await getUi();
+const profile = await getProfile();
+const skills = await getSkills();
+---
+
+<BaseLayout title={ui.about.metaTitle} description={ui.about.metaDescription}>
+  <section class="on-dark bg-carbon text-on-dark">
+    <div class="container-page pt-16 pb-12 sm:pt-20">
+      <p class="eyebrow mb-4 text-pulse-text-dark">{ui.about.eyebrow}</p>
+      <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">{ui.about.heading}</h1>
+    </div>
+    <PulseLine variant="title" animate />
+  </section>
+
+  <section class="container-page flex flex-wrap gap-12 pt-14">
+    <div class="flex min-w-0 flex-[999_1_480px] flex-col gap-5">
+      {profile.about.map((para) => (
+        <p class="text-lg leading-[1.7] text-ink-2">{para}</p>
+      ))}
+    </div>
+    <div class="flex-[1_1_260px]">
+      <Placeholder
+        label={profile.photo.label}
+        src={profile.photo.src}
+        alt={profile.photo.alt}
+        width={300}
+        height={360}
+        class="h-[360px] w-full max-w-[300px] rounded-[10px]"
+      />
+    </div>
+  </section>
+
+  <section class="container-page pt-16">
+    <h2 class="mb-8 text-[30px] sm:text-[34px]">{ui.about.skillsHeading}</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-12">
+      <SkillGroup group={skills.engineering} tone="light" headingLevel="h3" />
+      <SkillGroup group={skills.business} tone="light" headingLevel="h3" />
+      <SkillGroup group={skills.languages} tone="light" headingLevel="h3" />
+    </div>
+  </section>
+
+  <section class="container-page grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-12 pt-16 pb-24">
+    <div>
+      <h2 class="mb-6 text-[30px] sm:text-[34px]">{ui.about.educationHeading}</h2>
+      <ul class="flex flex-col">
+        {profile.education.map((e) => (
+          <li class="border-t border-divider py-5">
+            <p class="font-mono text-sm text-ink-3">{e.dates}</p>
+            <h3 class="mt-1.5 font-sans text-lg font-semibold">{e.degree}</h3>
+            <p class="mt-1 text-base text-ink-2">{e.school}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h2 class="mb-6 text-[30px] sm:text-[34px]">{ui.about.certificationsHeading}</h2>
+      <ul class="flex flex-col">
+        {profile.certifications.map((c) => (
+          <li class="border-t border-divider py-3.5">
+            <p class="text-base text-ink">{c.name}</p>
+            {c.issuer && <p class="mt-0.5 font-mono text-[13px] text-ink-3">{c.issuer}</p>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <ContactCTA ui={ui} profile={profile} />
+</BaseLayout>

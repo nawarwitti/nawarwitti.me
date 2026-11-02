@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PulseLine from '../components/PulseLine.astro';
+import { getUi } from '../lib/content';
+
+const ui = await getUi();
+---
+
+<BaseLayout title={ui.notFound.metaTitle} description={ui.notFound.metaDescription}>
+  <section class="on-dark bg-carbon text-on-dark">
+    <div class="container-page pt-20 pb-16">
+      <p class="eyebrow mb-4 text-pulse-text-dark">{ui.notFound.eyebrow}</p>
+      <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">{ui.notFound.heading}</h1>
+      <a href="/" class="btn-primary mt-10">
+        {ui.notFound.link}
+      </a>
+    </div>
+    <PulseLine variant="title" animate />
+    <div class="h-16"></div>
+  </section>
+</BaseLayout>

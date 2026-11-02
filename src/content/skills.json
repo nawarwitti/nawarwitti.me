@@ -1,0 +1,32 @@
+{
+  "engineering": {
+    "label": "Engineering",
+    "heading": "From schematic to soldered board",
+    "items": [
+      "Analog circuit design",
+      "Power electronics",
+      "PCB design (EasyEDA)",
+      "Embedded systems (ESP32, STM32, Arduino)",
+      "Circuit simulation (LTspice, Proteus)",
+      "Soldering & troubleshooting",
+      "Reverse engineering",
+      "C programming"
+    ]
+  },
+  "business": {
+    "label": "Business",
+    "heading": "From tender to after-sales",
+    "items": [
+      "Technical sales",
+      "B2B business development",
+      "Medical devices market",
+      "Tenders & procurement",
+      "International relations"
+    ]
+  },
+  "languages": {
+    "label": "Languages",
+    "heading": "Languages",
+    "items": ["Arabic (native)", "Turkish (full professional)", "English (professional working)"]
+  }
+}

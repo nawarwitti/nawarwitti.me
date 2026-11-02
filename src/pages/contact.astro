@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { getProfile, getUi } from '../lib/content';
+
+const ui = await getUi();
+const profile = await getProfile();
+// Phone number is intentionally not published (privacy).
+const rows = [
+  { label: ui.contact.emailLabel, value: profile.email, href: `mailto:${profile.email}` },
+  { label: ui.contact.linkedinLabel, value: 'linkedin.com/in/nawar-witti', href: profile.linkedin },
+  { label: ui.contact.cvLabel, value: 'cv.pdf', href: profile.cv, download: true },
+  { label: ui.contact.locationLabel, value: profile.location },
+];
+---
+
+<BaseLayout title={ui.contact.metaTitle} description={ui.contact.metaDescription}>
+  <ContactCTA ui={ui} profile={profile} headingLevel="h1" />
+  <section class="container-page pt-14 pb-24">
+    <dl class="max-w-[720px]">
+      {rows.map((r) => (
+        <div class="flex flex-wrap gap-x-8 gap-y-1 border-t border-divider py-5">
+          <dt class="flex-[0_0_140px] font-mono text-sm text-ink-3">{r.label}</dt>
+          <dd class="min-w-0 flex-1 text-lg break-words">
+            {r.href ? (
+              <a
+                href={r.href}
+                class="link-light"
+                download={r.download ? '' : undefined}
+                rel={r.href.startsWith('http') ? 'me noopener' : undefined}
+                target={r.href.startsWith('http') ? '_blank' : undefined}
+              >
+                {r.value}
+              </a>
+            ) : (
+              r.value
+            )}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+interface Props {
+  group: { label: string; heading: string; items: string[] };
+  tone?: 'light' | 'dark';
+  headingLevel?: 'h2' | 'h3';
+}
+const { group, tone = 'dark', headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<div>
+  <p
+    class:list={[
+      'eyebrow mb-3',
+      tone === 'dark' ? 'text-pulse-text-dark' : 'text-pulse-text-light',
+    ]}
+  >
+    {group.label}
+  </p>
+  <Heading class="mb-6 text-[28px] leading-tight sm:text-[32px]">{group.heading}</Heading>
+  <ul class="flex flex-wrap gap-2.5">
+    {group.items.map((s) => (
+      <li
+        class:list={[
+          'rounded-full border px-3.5 py-2 text-[15px]',
+          tone === 'dark'
+            ? 'border-[#3A3A36] text-[#E4E2DC]'
+            : 'border-card-border bg-card text-ink-2',
+        ]}
+      >
+        {s}
+      </li>
+    ))}
+  </ul>
+</div>

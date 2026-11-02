@@ -1,0 +1,49 @@
+---
+// Shows the real image when `src` is set; otherwise a dashed box labelled with what goes there.
+interface Props {
+  label: string;
+  src?: string;
+  alt?: string;
+  tone?: 'light' | 'dark';
+  class?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+}
+const {
+  label,
+  src,
+  alt,
+  tone = 'light',
+  class: className,
+  width,
+  height,
+  loading = 'lazy',
+} = Astro.props;
+---
+
+{src ? (
+  <img
+    src={src}
+    alt={alt ?? label}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    class:list={['object-cover', className]}
+  />
+) : (
+  <div
+    role="img"
+    aria-label={`Placeholder: ${label}`}
+    class:list={[
+      'flex items-center justify-center border border-dashed p-3 text-center font-mono text-xs',
+      tone === 'dark'
+        ? 'border-outline-dark bg-carbon-raised text-on-dark-3'
+        : 'border-[#B9B5AC] bg-chip text-ink-3',
+      className,
+    ]}
+  >
+    [{label}]
+  </div>
+)}

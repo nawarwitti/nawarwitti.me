@@ -1,0 +1,317 @@
+# nawarwitti.me — Nawar Witti's personal website
+
+This is the code for **https://nawarwitti.me**.
+It is built with [Astro](https://astro.build) and Tailwind CSS, and it is hosted for free on **GitHub Pages**.
+
+You do **not** need to know how to code to change the text. All text lives in simple files inside `src/content/`.
+
+---
+
+## 1. See the site on your computer
+
+You need [Node.js](https://nodejs.org) installed once (version 24 LTS is best; at least 22.23.4).
+
+Open a terminal in this folder and run:
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Then open **http://localhost:4321** in your browser. The page updates by itself every time you save a file. Press `Ctrl + C` in the terminal to stop it.
+
+Other useful commands:
+
+| Command           | What it does                                                    |
+| ----------------- | --------------------------------------------------------------- |
+| `npm run build`   | Builds the final website into the `dist/` folder.               |
+| `npm run preview` | Shows the built `dist/` site, exactly as visitors will see it.  |
+| `npm run check`   | Checks the content files and code for mistakes.                 |
+| `npm run og`      | Re-creates `public/og-image.png` (the picture shown when the link is shared). |
+
+> Tip: always run `npm run build` before you push. If it says **Complete!**, it is safe to publish.
+
+---
+
+## 2. Where the content is
+
+| What you want to change                                  | File                                    |
+| -------------------------------------------------------- | --------------------------------------- |
+| Name, pitch, summary, email, LinkedIn, About text, quick facts, education, certifications, photo | `src/content/profile.json` |
+| Jobs and roles (Experience page and Home)                | `src/content/experience.json`           |
+| Skills and languages                                     | `src/content/skills.json`               |
+| Projects (one file per project)                          | `src/content/projects/*.md`             |
+| Menu words, buttons, headings, page titles and descriptions (SEO) | `src/content/ui/en.json`        |
+| The CV that visitors download                            | `public/cv.pdf`                         |
+| Images                                                   | `public/` (see section 5)               |
+
+Rules when editing `.json` files:
+
+- Keep the quotes `"..."` around text.
+- Put a comma `,` between items, but **not** after the last item in a list.
+- If something breaks, run `npm run dev` — the terminal will tell you the file and line with the problem.
+
+---
+
+## 3. Edit content
+
+**Example — change the pitch on the Home page.** Open `src/content/profile.json` and change:
+
+```json
+"pitch": "I design and build electronic hardware, and I know how medical devices are sold and used.",
+```
+
+**Example — add a new job.** Open `src/content/experience.json` and copy one `{ ... }` block. Give it a new unique `"id"` and set `"order"` (1 = shown first, newest at the top). The Home page shows the first 4.
+
+```json
+{
+  "id": "new-company",
+  "company": "New Company",
+  "location": "City",
+  "order": 1,
+  "summary": "One sentence shown on the Home page.",
+  "roles": [{ "role": "Your Role", "dates": "Jan 2027 – Present" }],
+  "bullets": ["What you did.", "Another thing you did."]
+}
+```
+
+Then change the `"order"` numbers of the other jobs so there are no duplicates.
+
+To show several roles at one company (like Şam Şerif), list them in `"roles"`, newest first.
+
+---
+
+## 4. Add a new project
+
+Adding a project = adding **one file**. No code changes.
+
+1. Copy an existing file in `src/content/projects/`, for example `buck-converter.md`.
+2. Rename it. The file name becomes the web address:
+   `my-new-project.md` → `https://nawarwitti.me/projects/my-new-project/`
+   (use small letters and dashes, no spaces).
+3. Change the fields between the two `---` lines:
+
+```yaml
+---
+title: My new project
+summary: One line that appears on the project card.
+status: Completed            # or: In progress
+date: Mar 2027               # optional
+context: University project  # optional
+tags: [Analog, PCB]
+featured: false              # only ONE project should be true (it is shown big on Home)
+order: 7                     # position in the list (1 = first)
+cover:
+  label: 'TODO: photo of the board'          # text shown until you add a picture
+  src: /projects/my-new-project/cover.jpg    # add this line when the picture exists
+  alt: Assembled PCB of my new project       # describe the picture (for blind visitors and Google)
+problem: What problem it solves.             # optional
+approach: How you solved it.                 # optional
+whatIDid:
+  - First thing I did.
+  - Second thing I did.
+results:                                     # optional — only real, measured numbers
+  - { value: '12 V', label: Output voltage }
+tools: [ESP32, KiCad]
+gallery:                                     # optional — more pictures
+  - label: Schematic
+    src: /projects/my-new-project/schematic.png
+    alt: Schematic of the circuit
+nextSteps:                                   # optional — for projects in progress
+  - Next thing to do.
+---
+
+You can also write normal text here (below the second ---). It appears on the project page.
+```
+
+Any section you leave out is simply not shown.
+The Home page shows the `featured: true` project big, and the next 4 projects (by `order`) as cards.
+
+---
+
+## 5. Replace the CV and add images
+
+### CV
+
+The file `public/cv.pdf` is now a **placeholder**. To replace it:
+
+1. In FlowCV, click **Download** to get your CV as a PDF.
+2. Rename the file to exactly `cv.pdf`.
+3. Put it in the `public/` folder and replace the old one.
+
+All "Download CV" buttons use this file automatically.
+
+### Your photo
+
+1. Save your photo as `public/photo.jpg` (a portrait photo, about 640 × 760 pixels, under 300 KB is ideal).
+2. In `src/content/profile.json`, add a `src` line to `photo`:
+
+```json
+"photo": {
+  "label": "Professional photo",
+  "src": "/photo.jpg",
+  "alt": "Portrait of Nawar Witti"
+},
+```
+
+### Project images
+
+1. Put the files in `public/projects/...`, for example `public/projects/biosignal/block-diagram.png`.
+2. In the project's `.md` file, add `src:` to the `cover` or `gallery` item (the path starts with `/` and does **not** include `public`):
+
+```yaml
+cover:
+  label: Block diagram
+  src: /projects/biosignal/block-diagram.png
+  alt: Block diagram of the biosignal acquisition device
+```
+
+Until a `src` is added, the site shows a dashed box with the `label` text, so you can see what is still missing.
+
+Tips: use `.jpg` for photos and `.png` for diagrams and plots. Keep each image under about 400 KB so the site stays fast. Never use stock photos — only your real boards, schematics and plots.
+
+---
+
+## 6. Put the site online (GitHub Pages)
+
+Do these steps **once**, logged in to **your own** GitHub account.
+
+### 6.1 Create the repository on GitHub
+
+1. Go to https://github.com/new
+2. Repository name: for example `nawarwitti.me`
+3. Choose **Public**.
+4. Do **not** tick "Add a README", ".gitignore" or "license" (this folder already has them).
+5. Click **Create repository**.
+
+### 6.2 Push this folder
+
+This folder is already a git repository with the first commit made. Open a terminal **in this folder** and run these commands one by one. Replace `YOUR-USERNAME` with your GitHub username:
+
+```bash
+git remote add origin https://github.com/YOUR-USERNAME/nawarwitti.me.git
+```
+
+```bash
+git branch -M main
+```
+
+```bash
+git push -u origin main
+```
+
+The first time, a window opens and asks you to sign in to GitHub. Sign in with **your** account.
+
+> If git says "Please tell me who you are", run these two commands with your own name and email, then try again:
+>
+> ```bash
+> git config --global user.name "Nawar Witti"
+> ```
+>
+> ```bash
+> git config --global user.email "your-email@example.com"
+> ```
+
+### 6.3 Turn on GitHub Pages
+
+1. On GitHub, open your repository → **Settings** → **Pages** (left menu).
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Go to the **Actions** tab. You will see "Deploy to GitHub Pages" running. Wait for the green tick (about 1–2 minutes). If it did not start, click it and press **Run workflow**.
+
+### 6.4 Custom domain and HTTPS
+
+1. Go back to **Settings → Pages**.
+2. Under **Custom domain**, type `nawarwitti.me` and click **Save**.
+   - If GitHub says the domain is already used, it is still set on another of your repositories. Open that repository → Settings → Pages → remove the custom domain there, then try again.
+3. Wait until GitHub shows **"DNS check successful"** (a few minutes, sometimes up to 24 hours).
+4. Tick **Enforce HTTPS**. (If it is greyed out, wait — GitHub is still creating the certificate. This can take up to an hour.)
+5. Recommended: verify the domain for your account at GitHub → your profile picture → **Settings → Pages → Add a domain**. This stops other people from using it.
+
+The file `public/CNAME` (containing `nawarwitti.me`) is already in this project, so the domain stays set after every deploy.
+
+### 6.5 Check your DNS (at your domain provider)
+
+Your domain should already point to GitHub. If the DNS check fails, make sure these records exist at the company where you bought `nawarwitti.me`:
+
+| Type  | Name / Host | Value                     |
+| ----- | ----------- | ------------------------- |
+| A     | `@`         | `185.199.108.153`         |
+| A     | `@`         | `185.199.109.153`         |
+| A     | `@`         | `185.199.110.153`         |
+| A     | `@`         | `185.199.111.153`         |
+| AAAA  | `@`         | `2606:50c0:8000::153`     |
+| AAAA  | `@`         | `2606:50c0:8001::153`     |
+| AAAA  | `@`         | `2606:50c0:8002::153`     |
+| AAAA  | `@`         | `2606:50c0:8003::153`     |
+| CNAME | `www`       | `YOUR-USERNAME.github.io` |
+
+Remove any other A/AAAA records for `@` (for example from a "parking" page).
+
+To check from your computer (Windows terminal):
+
+```bash
+nslookup nawarwitti.me
+```
+
+You should see the four `185.199.x.153` addresses.
+
+---
+
+## 7. Update the site later
+
+After you change any file:
+
+```bash
+npm run build
+```
+
+```bash
+git add .
+```
+
+```bash
+git commit -m "Update content"
+```
+
+```bash
+git push
+```
+
+GitHub rebuilds and publishes the site automatically in about 1–2 minutes (watch the **Actions** tab).
+
+---
+
+## 8. After the site is live
+
+- Add `https://nawarwitti.me` as the website on your LinkedIn profile.
+- Add it to the header of your CV in FlowCV (then export the CV again and replace `public/cv.pdf`).
+- Test your share preview by pasting the link into a LinkedIn post draft.
+
+---
+
+## 9. Later: Turkish version
+
+The site is ready for a Turkish version at `/tr/`:
+
+1. Copy `src/content/ui/en.json` to `src/content/ui/tr.json` and translate the text.
+2. In `astro.config.mjs`, change `locales: ['en']` to `locales: ['en', 'tr']`.
+3. Create `src/pages/tr/` with copies of the pages that call `getUi('tr')`.
+
+---
+
+## Project structure (for developers)
+
+```
+public/                 Files copied as-is: CNAME, cv.pdf, og-image.png, favicon.svg, robots.txt, images
+src/content/            ALL text and data (edit these)
+src/content.config.ts   Rules for the content files (what fields exist)
+src/components/         Hero, QuickFacts, ProjectCard, Timeline, SkillGroup, ContactCTA, Tag, StatusBadge, PulseLine, Placeholder…
+src/layouts/            Page frame: <head>, SEO tags, header, footer
+src/pages/              One file per page / URL
+src/styles/global.css   Colours and fonts ("Carbon and pulse" design tokens)
+.github/workflows/      Automatic deploy to GitHub Pages
+scripts/                Helper scripts (share image)
+```

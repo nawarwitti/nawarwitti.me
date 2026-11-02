@@ -1,0 +1,49 @@
+---
+// The ECG pulse line — the site's signature motif. Always decorative.
+interface Props {
+  variant: 'logo' | 'hero' | 'title' | 'small';
+  animate?: boolean;
+  class?: string;
+}
+const { variant, animate = false, class: className } = Astro.props;
+
+const shapes = {
+  logo: { w: 28, h: 18, points: '0,10 9,10 12,3 16,16 19,10 28,10', stroke: 2.2 },
+  small: { w: 120, h: 28, points: '0,16 40,16 48,4 56,26 64,10 70,16 120,16', stroke: 2.2 },
+  hero: {
+    w: 1440,
+    h: 70,
+    points: '0,40 520,40 560,40 580,12 600,64 620,22 640,40 1440,40',
+    stroke: 2,
+  },
+  title: {
+    w: 1440,
+    h: 56,
+    points: '0,32 760,32 790,32 808,8 826,50 842,18 860,32 1440,32',
+    stroke: 2,
+  },
+};
+const s = shapes[variant];
+const fullWidth = variant === 'hero' || variant === 'title';
+---
+
+<svg
+  class:list={['block', className]}
+  width={fullWidth ? '100%' : s.w}
+  height={s.h}
+  viewBox={`0 0 ${s.w} ${s.h}`}
+  preserveAspectRatio={fullWidth ? 'none' : undefined}
+  aria-hidden="true"
+  focusable="false"
+>
+  <polyline
+    class:list={[{ 'pulse-draw': animate }]}
+    points={s.points}
+    pathLength="1"
+    fill="none"
+    stroke="var(--color-pulse)"
+    stroke-width={s.stroke}
+    stroke-linejoin="round"
+    vector-effect={fullWidth ? 'non-scaling-stroke' : undefined}
+  ></polyline>
+</svg>

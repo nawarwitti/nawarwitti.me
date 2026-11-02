@@ -1,0 +1,47 @@
+---
+import Placeholder from './Placeholder.astro';
+import StatusBadge from './StatusBadge.astro';
+import Tag from './Tag.astro';
+import { projectUrl, type Project, type Ui } from '../lib/content';
+
+interface Props {
+  ui: Ui;
+  project: Project;
+  showTags?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const { ui, project, showTags = false, headingLevel = 'h3' } = Astro.props;
+const p = project.data;
+const Heading = headingLevel;
+---
+
+<article
+  class="group relative flex flex-col overflow-hidden rounded-[12px] border border-card-border bg-card transition-colors hover:border-ink-3"
+  data-tags={p.tags.join('|')}
+>
+  <Placeholder
+    label={p.cover.label}
+    src={p.cover.src}
+    alt={p.cover.alt}
+    width={400}
+    height={170}
+    class="h-[170px] w-full border-0 border-b border-card-border"
+  />
+  <div class="flex flex-grow flex-col gap-2.5 p-5">
+    <p class="font-mono text-xs text-pulse-text-light">{p.tags[0]}</p>
+    <Heading class="text-[21px] leading-[1.25]">
+      <a href={projectUrl(project.id)} class="text-ink no-underline after:absolute after:inset-0">
+        {p.title}
+      </a>
+    </Heading>
+    <p class="text-[15px] leading-[1.55] text-ink-2">{p.summary}</p>
+    {showTags && (
+      <div class="mt-auto flex flex-wrap gap-2 pt-2">
+        <StatusBadge status={p.status} label={ui.projects.status[p.status]} />
+        {p.tags.map((t) => (
+          <Tag>{t}</Tag>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

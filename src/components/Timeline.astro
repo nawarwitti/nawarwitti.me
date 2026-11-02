@@ -1,0 +1,68 @@
+---
+import { companyDates, type Job, type Ui } from '../lib/content';
+
+interface Props {
+  items: Job[];
+  mode?: 'preview' | 'full';
+  ui: Ui;
+}
+const { items, mode = 'full', ui } = Astro.props;
+---
+
+<ol class="flex flex-col">
+  {items.map(({ data: job }) =>
+    mode === 'preview' ? (
+      <li class="flex flex-wrap gap-x-8 gap-y-2 border-t border-divider py-6">
+        <p class="flex-[0_0_200px] font-mono text-sm text-ink-3">{companyDates(job.roles)}</p>
+        <div class="min-w-0 flex-[999_1_480px]">
+          <h3 class="font-sans text-[19px] font-semibold">
+            {job.roles[0].role} <span class="font-normal text-ink-3">· {job.company}</span>
+          </h3>
+          <p class="mt-2 text-base leading-relaxed text-ink-2">{job.summary}</p>
+        </div>
+      </li>
+    ) : (
+      <li class="flex flex-wrap gap-x-8 gap-y-3 border-t border-divider py-8">
+        <div class="flex-[0_0_200px]">
+          <p class="font-mono text-sm text-ink-3">{companyDates(job.roles)}</p>
+          <p class="mt-1 font-mono text-sm text-ink-3">{job.location}</p>
+        </div>
+        <div class="min-w-0 flex-[999_1_480px]">
+          <h2 class="text-[26px] leading-tight">{job.company}</h2>
+          <ul class="mt-3 flex flex-col gap-1.5">
+            {job.roles.map((r) => (
+              <li class="flex flex-wrap items-baseline gap-x-3">
+                <span class="text-[17px] font-semibold">{r.role}</span>
+                {job.roles.length > 1 && (
+                  <span class="font-mono text-[13px] text-ink-3">{r.dates}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+          <ul class="mt-4 flex list-disc flex-col gap-2 pl-5 text-base leading-relaxed text-ink-2 marker:text-ink-3">
+            {job.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+          {job.links.length > 0 && (
+            <div class="mt-4">
+              <p class="font-mono text-[13px] text-ink-3">{ui.experience.relatedProjects}</p>
+              <ul class="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                {job.links.map((l) => (
+                  <li>
+                    <a
+                      href={l.href}
+                      class="link-light inline-flex min-h-11 items-center text-[15px]"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </li>
+    ),
+  )}
+</ol>

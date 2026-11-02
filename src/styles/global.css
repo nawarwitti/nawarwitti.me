@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+/* "Carbon and pulse" design tokens (plan §6.1) */
+@theme {
+  --color-carbon: #111111;
+  --color-carbon-line: #262624;
+  --color-carbon-raised: #1e1e1c;
+  --color-paper: #f5f3ef;
+  --color-card: #ffffff;
+  --color-card-border: #e2ded6;
+  --color-divider: #dcd8cf;
+  --color-chip: #eeebe5;
+  --color-chip-text: #3a3a36;
+  --color-ink: #111111;
+  --color-ink-2: #45453f;
+  --color-ink-3: #55554f;
+  --color-on-dark: #f5f3ef;
+  --color-on-dark-2: #c9c7c1;
+  --color-on-dark-3: #a8a6a0;
+  --color-outline-dark: #55554f;
+  --color-pulse: #d7263d;
+  --color-pulse-hover: #b81f33;
+  --color-pulse-text-light: #c21f35;
+  --color-pulse-text-dark: #f0455a;
+  --color-pulse-tint: #fbe9eb;
+  --color-pulse-deep: #8f1626;
+
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-semibold;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-pulse-text-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-pulse-text-dark);
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6;
+}
+@utility eyebrow {
+  @apply font-mono text-sm tracking-[0.04em];
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center rounded-[6px] px-6 py-3 text-base font-medium no-underline transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-pulse text-white hover:bg-pulse-hover;
+}
+@utility btn-outline-dark {
+  @apply btn border border-outline-dark text-on-dark hover:border-on-dark-3;
+}
+@utility btn-outline-light {
+  @apply btn border border-ink-3 text-ink hover:border-ink;
+}
+@utility link-light {
+  @apply font-medium text-pulse-text-light underline-offset-4 hover:text-pulse-deep hover:underline;
+}
+
+/* Pulse line: one-time draw animation, off for reduced motion */
+.pulse-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: pulse-draw 1.6s ease-out 0.2s forwards;
+}
+@keyframes pulse-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
