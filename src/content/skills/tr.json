@@ -1,0 +1,32 @@
+{
+  "engineering": {
+    "label": "Mühendislik",
+    "heading": "Tasarlayıp kurduğum devreler",
+    "items": [
+      "Analog devre tasarımı",
+      "Güç elektroniği",
+      "PCB tasarımı (EasyEDA)",
+      "Gömülü sistemler (ESP32, STM32, Arduino)",
+      "Devre simülasyonu (LTspice, Proteus)",
+      "Lehimleme ve arıza tespiti",
+      "Tersine mühendislik",
+      "C programlama"
+    ]
+  },
+  "business": {
+    "label": "İş",
+    "heading": "İhaleden satış sonrasına",
+    "items": [
+      "Teknik satış",
+      "B2B iş geliştirme",
+      "Tıbbi cihaz pazarı",
+      "İhale ve satın alma",
+      "Uluslararası ilişkiler"
+    ]
+  },
+  "languages": {
+    "label": "Diller",
+    "heading": "Diller",
+    "items": ["Arapça (ana dil)", "Türkçe (tam profesyonel)", "İngilizce (profesyonel çalışma)"]
+  }
+}

@@ -1,0 +1,236 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PulseLine from '../components/PulseLine.astro';
+import Placeholder from '../components/Placeholder.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import Tag from '../components/Tag.astro';
+import { getUi, localePath, type Locale, type Project } from '../lib/content';
+
+interface Props {
+  locale: Locale;
+  project: Project;
+}
+const { locale, project } = Astro.props;
+const p = project.data;
+const ui = await getUi(locale);
+const { Content } = await render(project);
+const hasBody = Boolean(project.body?.trim());
+const backHref = localePath(locale, '/projects/');
+
+const subtitle = [p.fullTitle, p.context].filter(Boolean).join('. ');
+const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
+---
+
+<BaseLayout
+  title={`${p.title} — Nawar Witti`}
+  description={p.summary}
+  locale={locale}
+  type="article"
+>
+  <section class="on-dark bg-carbon text-on-dark">
+    <div class="container-page pt-12 pb-14 sm:pt-16">
+      <a
+        href={backHref}
+        class="mb-8 inline-flex min-h-11 items-center text-[15px] text-on-dark-2 no-underline hover:text-on-dark"
+      >
+        {ui.project.back}
+      </a>
+      <div class="mb-5 flex flex-wrap gap-2">
+        <StatusBadge status={p.status} label={ui.projects.status[p.status]} tone="dark" />
+        {p.contextTags.map((t) => (
+          <Tag tone="dark">{t}</Tag>
+        ))}
+        {p.tags.map((t) => (
+          <Tag tone="dark">{t}</Tag>
+        ))}
+      </div>
+      <h1 class="max-w-[900px] text-[36px] leading-[1.1] sm:text-[54px]">{p.title}</h1>
+      {subtitle && (
+        <p class="mt-5 max-w-[760px] text-lg leading-relaxed text-on-dark-2">{subtitle}</p>
+      )}
+      {p.date && (
+        <p class="mt-4 font-mono text-sm text-on-dark-3">
+          {ui.project.dateLabel}: {p.date}
+        </p>
+      )}
+    </div>
+    <PulseLine variant="title" animate />
+  </section>
+
+  {(p.problem || p.approach) && (
+    <section class="container-page grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-10 pt-16">
+      {p.problem && (
+        <div>
+          <h2 class="eyebrow mb-2.5 font-mono font-normal text-pulse-text-light">
+            {ui.project.problem}
+          </h2>
+          <p class="text-lg leading-[1.65] text-[#2E2E2A]">{p.problem}</p>
+        </div>
+      )}
+      {p.approach && (
+        <div>
+          <h2 class="eyebrow mb-2.5 font-mono font-normal text-pulse-text-light">
+            {ui.project.approach}
+          </h2>
+          <p class="text-lg leading-[1.65] text-[#2E2E2A]">{p.approach}</p>
+        </div>
+      )}
+    </section>
+  )}
+
+  {p.chain.length > 0 && (
+    <section class="container-page pt-16">
+      <h2 class="mb-6 text-[28px] sm:text-[32px]">{ui.project.chain}</h2>
+      <ol class="flex flex-wrap items-stretch gap-2.5">
+        {p.chain.map((c, i) => (
+          <li
+            class:list={[
+              'flex-[1_1_150px] rounded-[8px] bg-card p-4',
+              i === p.chain.length - 1
+                ? 'border-[1.5px] border-pulse'
+                : 'border border-card-border',
+            ]}
+          >
+            <p class="font-mono text-xs text-ink-3">{String(i + 1).padStart(2, '0')}</p>
+            <p class="mt-2 text-[17px] font-semibold">{c.name}</p>
+            <p class="mt-1.5 text-sm leading-normal text-ink-2">{c.role}</p>
+          </li>
+        ))}
+      </ol>
+      {p.chainNote && <p class="mt-3.5 text-[15px] text-ink-2">{p.chainNote}</p>}
+    </section>
+  )}
+
+  {p.results.length > 0 && (
+    <section class="container-page pt-16">
+      <h2 class="mb-6 text-[28px] sm:text-[32px]">
+        {p.status === 'In progress' ? ui.project.results : ui.project.resultsCompleted}
+      </h2>
+      <ul class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3.5">
+        {p.results.map((r) => (
+          <li class="on-dark rounded-[10px] bg-carbon p-6 text-on-dark">
+            <p class="font-serif text-[34px] leading-tight sm:text-[40px]">{r.value}</p>
+            <p class="mt-1.5 text-sm text-on-dark-3">{r.label}</p>
+          </li>
+        ))}
+      </ul>
+      {p.resultsNote && <p class="mt-3.5 text-[15px] text-ink-2">{p.resultsNote}</p>}
+    </section>
+  )}
+
+  <section class="container-page grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-12 pt-16">
+    {p.whatIDid.length > 0 && (
+      <div>
+        <h2 class="mb-5 text-[28px] sm:text-[32px]">{ui.project.whatIDid}</h2>
+        <ul class="flex list-disc flex-col gap-3.5 pl-5 text-base leading-relaxed text-[#2E2E2A] marker:text-pulse">
+          {p.whatIDid.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+    <div>
+      {p.nextSteps.length > 0 && (
+        <>
+          <h2 class="mb-5 text-[28px] sm:text-[32px]">{ui.project.nextSteps}</h2>
+          <ul class="flex list-disc flex-col gap-3.5 pl-5 text-base leading-relaxed text-[#2E2E2A] marker:text-ink-3">
+            {p.nextSteps.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      {p.tools.length > 0 && (
+        <>
+          <h2
+            class:list={[
+              'mb-2.5 font-mono text-sm font-normal text-ink-3',
+              p.nextSteps.length > 0 ? 'mt-7' : 'mt-0 sm:mt-3',
+            ]}
+          >
+            {ui.project.tools}
+          </h2>
+          <ul class="flex flex-wrap gap-2">
+            {p.tools.map((t) => (
+              <li>
+                <Tag size="md">{t}</Tag>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  </section>
+
+  {hasBody && (
+    <section class="prose-body container-page pt-16">
+      <Content />
+    </section>
+  )}
+
+  <section class="container-page pt-16">
+    <h2 class="mb-6 text-[28px] sm:text-[32px]">{ui.project.gallery}</h2>
+    <ul class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3.5">
+      {gallery.map((img) => (
+        <li>
+          <Placeholder
+            label={img.label}
+            src={img.src}
+            alt={img.alt}
+            width={400}
+            height={220}
+            class="h-[220px] w-full rounded-[10px]"
+          />
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="container-page pt-14 pb-24">
+    {p.disclaimer && (
+      <p class="mb-8 rounded-[8px] border border-divider bg-card px-4.5 py-4 text-sm text-ink-2">
+        {p.disclaimer}
+      </p>
+    )}
+    <a href={backHref} class="link-light inline-flex min-h-11 items-center text-base">
+      {ui.project.back}
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose-body :global(h2) {
+    font-size: 28px;
+    margin: 0 0 16px;
+  }
+  .prose-body :global(h3) {
+    font-size: 21px;
+    margin: 24px 0 10px;
+  }
+  .prose-body :global(p),
+  .prose-body :global(ul),
+  .prose-body :global(ol) {
+    max-width: 760px;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--color-ink-2);
+    margin: 0 0 16px;
+  }
+  .prose-body :global(ul) {
+    list-style: disc;
+    padding-left: 20px;
+  }
+  .prose-body :global(ol) {
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  .prose-body :global(a) {
+    color: var(--color-pulse-text-light);
+    text-decoration: underline;
+  }
+  .prose-body :global(img) {
+    border-radius: 10px;
+    margin: 16px 0;
+  }
+</style>

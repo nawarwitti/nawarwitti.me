@@ -1,28 +1,29 @@
 ---
 import PulseLine from './PulseLine.astro';
-import type { Ui } from '../lib/content';
+import { LOCALES, localePath, switchLocale, type Locale, type Ui } from '../lib/content';
 
 interface Props {
   ui: Ui;
+  locale: Locale;
   name: string;
   cv: string;
 }
-const { ui, name, cv } = Astro.props;
+const { ui, locale, name, cv } = Astro.props;
 const path = Astro.url.pathname;
 
 const links = [
-  { href: '/projects/', label: ui.nav.projects },
-  { href: '/experience/', label: ui.nav.experience },
-  { href: '/about/', label: ui.nav.about },
-  { href: '/contact/', label: ui.nav.contact },
+  { href: localePath(locale, '/projects/'), label: ui.nav.projects },
+  { href: localePath(locale, '/experience/'), label: ui.nav.experience },
+  { href: localePath(locale, '/about/'), label: ui.nav.about },
+  { href: localePath(locale, '/contact/'), label: ui.nav.contact },
 ];
-const isActive = (href: string) => path === href || path.startsWith(href);
+const isActive = (href: string) => path.startsWith(href);
 ---
 
 <header class="on-dark border-b border-carbon-line bg-carbon">
   <div class="container-page flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4">
     <a
-      href="/"
+      href={localePath(locale, '/')}
       class="flex min-h-11 items-center gap-2.5 font-serif text-[22px] text-on-dark no-underline"
     >
       <PulseLine variant="logo" />
@@ -54,6 +55,31 @@ const isActive = (href: string) => path === href || path.startsWith(href);
           >
             {ui.nav.cv}
           </a>
+        </li>
+        <li>
+          <ul
+            class="flex items-center gap-1 font-mono text-[13px]"
+            aria-label={ui.nav.languageLabel}
+          >
+            {LOCALES.map((l) => (
+              <li>
+                <a
+                  href={switchLocale(path, l)}
+                  hreflang={l}
+                  lang={l}
+                  aria-current={l === locale ? 'true' : undefined}
+                  class:list={[
+                    'inline-flex min-h-11 min-w-11 items-center justify-center rounded-[6px] no-underline',
+                    l === locale
+                      ? 'bg-carbon-line text-on-dark'
+                      : 'text-on-dark-3 hover:text-on-dark',
+                  ]}
+                >
+                  {ui.langNames[l]}
+                </a>
+              </li>
+            ))}
+          </ul>
         </li>
       </ul>
     </nav>

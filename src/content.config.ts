@@ -1,6 +1,8 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { file, glob } from 'astro/loaders';
+import { glob } from 'astro/loaders';
+
+// Every folder in src/content/ has one file (or one sub-folder) per language: en and tr.
 
 // An image slot: set `src` (a path inside /public) once the real file exists.
 // Until then the site shows a dashed placeholder with `label` as its text.
@@ -10,6 +12,7 @@ const image = z.object({
   alt: z.string().optional(),
 });
 
+// Projects: src/content/projects/en/<slug>.md and src/content/projects/tr/<slug>.md
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
@@ -39,26 +42,24 @@ const projects = defineCollection({
 });
 
 const experience = defineCollection({
-  loader: file('./src/content/experience.json'),
+  loader: glob({ pattern: '*.json', base: './src/content/experience' }),
   schema: z.object({
-    company: z.string(),
-    location: z.string(),
-    order: z.number(),
-    summary: z.string(),
-    roles: z.array(
+    jobs: z.array(
       z.object({
-        role: z.string(),
-        dates: z.string(),
-        location: z.string().optional(),
+        company: z.string(),
+        location: z.string(),
+        order: z.number(),
+        summary: z.string(),
+        roles: z.array(z.object({ role: z.string(), dates: z.string() })),
+        bullets: z.array(z.string()),
+        links: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
       }),
     ),
-    bullets: z.array(z.string()),
-    links: z.array(z.object({ label: z.string(), href: z.string() })).default([]),
   }),
 });
 
 const profile = defineCollection({
-  loader: file('./src/content/profile.json'),
+  loader: glob({ pattern: '*.json', base: './src/content/profile' }),
   schema: z.object({
     name: z.string(),
     title: z.string(),
@@ -69,7 +70,8 @@ const profile = defineCollection({
     linkedin: z.url(),
     website: z.url(),
     cv: z.string(),
-    photo: image,
+    // Optional: add { "label": "...", "src": "/photo.jpg", "alt": "..." } to show a photo.
+    photo: image.optional(),
     summary: z.string(),
     about: z.array(z.string()),
     quickFacts: z.array(z.object({ value: z.string(), label: z.string() })),
@@ -78,13 +80,15 @@ const profile = defineCollection({
   }),
 });
 
+const skillGroup = z.object({
+  label: z.string(),
+  heading: z.string(),
+  items: z.array(z.string()),
+});
+
 const skills = defineCollection({
-  loader: file('./src/content/skills.json'),
-  schema: z.object({
-    label: z.string(),
-    heading: z.string(),
-    items: z.array(z.string()),
-  }),
+  loader: glob({ pattern: '*.json', base: './src/content/skills' }),
+  schema: z.object({ engineering: skillGroup, business: skillGroup, languages: skillGroup }),
 });
 
 // All interface text (menus, headings, buttons, page titles). One file per language.

@@ -3,17 +3,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PulseLine from '../components/PulseLine.astro';
 import { getUi } from '../lib/content';
 
-const ui = await getUi();
+// One 404 page for the whole site (GitHub Pages serves a single 404.html), in both languages.
+const en = await getUi('en');
+const tr = await getUi('tr');
 ---
 
-<BaseLayout title={ui.notFound.metaTitle} description={ui.notFound.metaDescription}>
+<BaseLayout title={en.notFound.metaTitle} description={en.notFound.metaDescription} locale="en">
   <section class="on-dark bg-carbon text-on-dark">
     <div class="container-page pt-20 pb-16">
-      <p class="eyebrow mb-4 text-pulse-text-dark">{ui.notFound.eyebrow}</p>
-      <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">{ui.notFound.heading}</h1>
-      <a href="/" class="btn-primary mt-10">
-        {ui.notFound.link}
-      </a>
+      <p class="eyebrow mb-4 text-pulse-text-dark">{en.notFound.eyebrow}</p>
+      <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">{en.notFound.heading}</h1>
+      <p lang="tr" class="mt-4 text-lg text-on-dark-2">
+        {tr.notFound.heading}
+      </p>
+      <div class="mt-10 flex flex-wrap gap-3.5">
+        <a href="/" class="btn-primary">
+          {en.notFound.link}
+        </a>
+        <a href="/tr/" lang="tr" class="btn-outline-dark">
+          {tr.notFound.link}
+        </a>
+      </div>
     </div>
     <PulseLine variant="title" animate />
     <div class="h-16"></div>

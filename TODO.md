@@ -8,14 +8,17 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 - [ ] **Real CV** — export from FlowCV → save as `public/cv.pdf` (replace the placeholder).
   The current `cv.pdf` is a one-page **placeholder** that says the real CV is coming. Do not share the site before replacing it.
   **Remove the phone number in FlowCV before exporting** — the CV is public on the site and the phone must stay private.
-- [x] **Professional photo** — added as `public/photo.jpg` (Home hero and About).
+- [x] **Photo** — removed on request; the site has no photo. (README section 5 explains how to add one later.)
 - [x] **Şam Şerif title confirmed:** "General Manager & Partner" (used on the site).
 - [ ] **Match the title in the CV and on LinkedIn:** the CV says "Partner & Business Development Manager" and LinkedIn says "General Manager". Change both to "General Manager & Partner".
+- [ ] **Proofread the Turkish version** (`/tr/`). The Turkish text was translated from the English plan — check it reads naturally to you, especially technical terms and job titles (`src/content/*/tr.json`, `src/content/projects/tr/`).
 - [ ] **Push to your GitHub and turn on Pages + HTTPS** (README section 6).
 
 ## 2. Project images
 
-### P1 — Wireless EMG/EKG/EOG device (`src/content/projects/biosignal-device.md`)
+Put each image once in `public/`, then add its `src:` line in **both** language files (`src/content/projects/en/…` and `src/content/projects/tr/…`).
+
+### P1 — Wireless EMG/EKG/EOG device (`biosignal-device.md`)
 
 - [ ] Block diagram → `public/projects/biosignal/block-diagram.png` (cover image)
 - [ ] Frequency-response plot → `public/projects/biosignal/frequency-response.png`
@@ -49,10 +52,10 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 
 ## 3. Missing facts
 
-- [ ] **P1 dates** — when did the TÜBİTAK project start, and when is it expected to finish? Add `date:` in `biosignal-device.md` (there is a `# TODO` line in the file).
-- [ ] **P6 date** — when was the signal simulation project done? Add `date:` in `biosignal-simulator.md`.
-- [ ] **Phone number** — not published on purpose (privacy). Decide if you want it on the site. If yes, tell a developer or add it to `src/pages/contact.astro`.
-- [ ] **P1 hardware results** (later) — when you have real measurements (measured CMRR, real EMG/EKG/EOG plots), add them to `results` and `gallery` in `biosignal-device.md`. Today all numbers are from simulation and are labelled "(sim.)".
+- [ ] **P1 dates** — when did the TÜBİTAK project start, and when is it expected to finish? Add `date:` in `projects/en/biosignal-device.md` and `projects/tr/biosignal-device.md` (there is a `# TODO` line in both).
+- [ ] **P6 date** — when was the signal simulation project done? Add `date:` in `projects/en/biosignal-simulator.md` and `projects/tr/biosignal-simulator.md`.
+- [ ] **Phone number** — not published on purpose (privacy). Decide if you want it on the site. If yes, tell a developer or add it to `src/views/ContactPage.astro`.
+- [ ] **P1 hardware results** (later) — when you have real measurements (measured CMRR, real EMG/EKG/EOG plots), add them to `results` and `gallery` in both `biosignal-device.md` files. Today all numbers are from simulation and are labelled "(sim.)".
 
 ## 4. Optional
 
@@ -62,7 +65,7 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 
 ## 5. Phase 2 (later, from the plan)
 
-- [ ] Turkish version at `/tr/` (README section 9).
+- [x] Turkish version at `/tr/` (README section 9).
 - [ ] `/notes` section for short technical write-ups or explainer videos.
 - [ ] Optional full-dark theme toggle.
 - [ ] Optional contact form (for example Formspree).

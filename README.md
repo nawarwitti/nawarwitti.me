@@ -38,15 +38,19 @@ Other useful commands:
 
 ## 2. Where the content is
 
-| What you want to change                                  | File                                    |
-| -------------------------------------------------------- | --------------------------------------- |
-| Name, pitch, summary, email, LinkedIn, About text, quick facts, education, certifications, photo | `src/content/profile.json` |
-| Jobs and roles (Experience page and Home)                | `src/content/experience.json`           |
-| Skills and languages                                     | `src/content/skills.json`               |
-| Projects (one file per project)                          | `src/content/projects/*.md`             |
-| Menu words, buttons, headings, page titles and descriptions (SEO) | `src/content/ui/en.json`        |
-| The CV that visitors download                            | `public/cv.pdf`                         |
-| Images                                                   | `public/` (see section 5)               |
+The site has two languages: **English** at `/` and **Turkish** at `/tr/`.
+Every content file exists twice: one for English (`en`) and one for Turkish (`tr`).
+**When you change something, change it in both files.**
+
+| What you want to change                                  | English file                     | Turkish file                     |
+| -------------------------------------------------------- | -------------------------------- | -------------------------------- |
+| Name, pitch, summary, email, LinkedIn, About text, quick facts, education, certifications | `src/content/profile/en.json` | `src/content/profile/tr.json` |
+| Jobs and roles (Experience page and Home)                | `src/content/experience/en.json` | `src/content/experience/tr.json` |
+| Skills and languages                                     | `src/content/skills/en.json`     | `src/content/skills/tr.json`     |
+| Projects (one file per project)                          | `src/content/projects/en/*.md`   | `src/content/projects/tr/*.md`   |
+| Menu words, buttons, headings, page titles and descriptions (SEO) | `src/content/ui/en.json` | `src/content/ui/tr.json`     |
+| The CV that visitors download (same file for both)       | `public/cv.pdf`                  | `public/cv.pdf`                  |
+| Images (same files for both)                             | `public/` (see section 5)        | `public/`                        |
 
 Rules when editing `.json` files:
 
@@ -54,21 +58,22 @@ Rules when editing `.json` files:
 - Put a comma `,` between items, but **not** after the last item in a list.
 - If something breaks, run `npm run dev` — the terminal will tell you the file and line with the problem.
 
+Rule when editing `.md` project files: if a value contains a comma — for example a Turkish decimal like `0,08 Hz` — put it in quotes: `'0,08 Hz'`.
+
 ---
 
 ## 3. Edit content
 
-**Example — change the pitch on the Home page.** Open `src/content/profile.json` and change:
+**Example — change the pitch on the Home page.** Open `src/content/profile/en.json` (and `tr.json` for Turkish) and change:
 
 ```json
 "pitch": "From schematic to soldered board: analog, power and embedded electronics.",
 ```
 
-**Example — add a new job.** Open `src/content/experience.json` and copy one `{ ... }` block. Give it a new unique `"id"` and set `"order"` (1 = shown first, newest at the top). The Home page shows the first 4.
+**Example — add a new job.** Open `src/content/experience/en.json` and copy one `{ ... }` block inside `"jobs"`. Set `"order"` (1 = shown first, newest at the top). The Home page shows the first 4. Then do the same in `experience/tr.json` with the Turkish text.
 
 ```json
 {
-  "id": "new-company",
   "company": "New Company",
   "location": "City",
   "order": 1,
@@ -81,24 +86,27 @@ Rules when editing `.json` files:
 Then change the `"order"` numbers of the other jobs so there are no duplicates.
 
 To show several roles at one company (like Şam Şerif), list them in `"roles"`, newest first.
+In Turkish files, write dates with Turkish month names (Oca, Şub, Mar, Nis, May, Haz, Tem, Ağu, Eyl, Eki, Kas, Ara) and "Günümüz" for "Present".
 
 ---
 
 ## 4. Add a new project
 
-Adding a project = adding **one file**. No code changes.
+Adding a project = adding **one file per language**. No code changes.
 
-1. Copy an existing file in `src/content/projects/`, for example `buck-converter.md`.
+1. Copy an existing file in `src/content/projects/en/`, for example `buck-converter.md`.
 2. Rename it. The file name becomes the web address:
-   `my-new-project.md` → `https://nawarwitti.me/projects/my-new-project/`
+   `my-new-project.md` → `https://nawarwitti.me/projects/my-new-project/` and `https://nawarwitti.me/tr/projects/my-new-project/`
    (use small letters and dashes, no spaces).
-3. Change the fields between the two `---` lines:
+3. Change the fields between the two `---` lines (see the example below).
+4. Copy the file to `src/content/projects/tr/` **with the same file name** and translate the text to Turkish.
+   If you skip this step, the Turkish site shows the English version until you add it.
 
 ```yaml
 ---
 title: My new project
 summary: One line that appears on the project card.
-status: Completed            # or: In progress
+status: Completed            # or: In progress  (keep these English words in both languages)
 date: Mar 2027               # optional
 context: University project  # optional
 tags: [Analog, PCB]
@@ -138,29 +146,30 @@ The Home page shows the `featured: true` project big, and the next 4 projects (b
 
 The file `public/cv.pdf` is now a **placeholder**. To replace it:
 
-1. In FlowCV, click **Download** to get your CV as a PDF.
-2. Rename the file to exactly `cv.pdf`.
-3. Put it in the `public/` folder and replace the old one.
+1. In FlowCV, **remove your phone number** (the CV is public on the website).
+2. Click **Download** to get your CV as a PDF.
+3. Rename the file to exactly `cv.pdf`.
+4. Put it in the `public/` folder and replace the old one.
 
-All "Download CV" buttons use this file automatically.
+All "Download CV" buttons (English and Turkish) use this file automatically.
 
-### Your photo
+### Photo (optional)
 
-1. Save your photo as `public/photo.jpg` (a portrait photo, about 640 × 760 pixels, under 300 KB is ideal).
-2. In `src/content/profile.json`, add a `src` line to `photo`:
+The site has no photo right now. If you want one later:
+
+1. Save it as `public/photo.jpg` (portrait, under 300 KB).
+2. In `src/content/profile/en.json` **and** `profile/tr.json`, add this block (for example after `"cv"`):
 
 ```json
-"photo": {
-  "label": "Professional photo",
-  "src": "/photo.jpg",
-  "alt": "Portrait of Nawar Witti"
-},
+"photo": { "label": "Photo", "src": "/photo.jpg", "alt": "Portrait of Nawar Witti" },
 ```
+
+The photo then appears next to the headline on Home and on the About page.
 
 ### Project images
 
 1. Put the files in `public/projects/...`, for example `public/projects/biosignal/block-diagram.png`.
-2. In the project's `.md` file, add `src:` to the `cover` or `gallery` item (the path starts with `/` and does **not** include `public`):
+2. In the project's `.md` file — in **both** `projects/en/` and `projects/tr/` — add `src:` to the `cover` or `gallery` item (the path starts with `/` and does **not** include `public`):
 
 ```yaml
 cover:
@@ -292,13 +301,14 @@ GitHub rebuilds and publishes the site automatically in about 1–2 minutes (wat
 
 ---
 
-## 9. Later: Turkish version
+## 9. Languages
 
-The site is ready for a Turkish version at `/tr/`:
+- English pages: `https://nawarwitti.me/...`
+- Turkish pages: `https://nawarwitti.me/tr/...`
+- The **EN · TR** buttons in the header switch to the same page in the other language.
+- Search engines are told that each page has an English and a Turkish version (hreflang), and the sitemap lists both.
 
-1. Copy `src/content/ui/en.json` to `src/content/ui/tr.json` and translate the text.
-2. In `astro.config.mjs`, change `locales: ['en']` to `locales: ['en', 'tr']`.
-3. Create `src/pages/tr/` with copies of the pages that call `getUi('tr')`.
+To add a third language later (for example Arabic), a developer needs to add it to `LOCALES` in `src/lib/content.ts` and `locales` in `astro.config.mjs`, create `src/pages/<lang>/`, and add `<lang>.json` / `<lang>/` files in every content folder.
 
 ---
 
@@ -306,11 +316,12 @@ The site is ready for a Turkish version at `/tr/`:
 
 ```
 public/                 Files copied as-is: CNAME, cv.pdf, og-image.png, favicon.svg, robots.txt, images
-src/content/            ALL text and data (edit these)
+src/content/            ALL text and data, one file or folder per language (edit these)
 src/content.config.ts   Rules for the content files (what fields exist)
 src/components/         Hero, QuickFacts, ProjectCard, Timeline, SkillGroup, ContactCTA, Tag, StatusBadge, PulseLine, Placeholder…
 src/layouts/            Page frame: <head>, SEO tags, header, footer
-src/pages/              One file per page / URL
+src/pages/              One small file per URL (English) and src/pages/tr/ (Turkish)
+src/views/              The page templates shared by both languages
 src/styles/global.css   Colours and fonts ("Carbon and pulse" design tokens)
 .github/workflows/      Automatic deploy to GitHub Pages
 scripts/                Helper scripts (share image)

@@ -7,7 +7,8 @@
     "experience": "Experience",
     "about": "About",
     "contact": "Contact",
-    "cv": "Download CV"
+    "cv": "Download CV",
+    "languageLabel": "Language"
   },
   "footer": {
     "copyright": "© {year} Nawar Witti",
@@ -17,7 +18,11 @@
     "metaTitle": "Nawar Witti — Electrical & Electronics Engineer · Medical Devices",
     "metaDescription": "Electronics engineer who understands medical hardware and the medical devices market. Analog circuits, PCB prototyping, embedded systems — and 9+ years in medical devices trading.",
     "eyebrow": "Electrical & Electronics Engineer — Medical Devices — Technical Sales",
-    "buttons": { "projects": "View projects", "cv": "Download CV", "linkedin": "LinkedIn" },
+    "buttons": {
+      "projects": "View projects",
+      "cv": "Download CV",
+      "linkedin": "LinkedIn"
+    },
     "featuredLabel": "Featured project",
     "signalChainLabel": "Signal chain",
     "caseStudyLink": "Read the case study →",
@@ -48,7 +53,10 @@
     "filterAll": "All",
     "noneFound": "No projects with this tag.",
     "countShown": "{n} shown",
-    "status": { "Completed": "Completed", "In progress": "In progress" }
+    "status": {
+      "Completed": "Completed",
+      "In progress": "In progress"
+    }
   },
   "project": {
     "back": "← All projects",
@@ -86,5 +94,14 @@
     "eyebrow": "404",
     "heading": "Flatline. This page does not exist.",
     "link": "← Back to home"
-  }
+  },
+  "langNames": {
+    "en": "EN",
+    "tr": "TR"
+  },
+  "ogLocales": {
+    "en": "en_US",
+    "tr": "tr_TR"
+  },
+  "personJobTitle": "Electrical & Electronics Engineer"
 }

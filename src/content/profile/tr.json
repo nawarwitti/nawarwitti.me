@@ -1,0 +1,45 @@
+{
+  "name": "Nawar Witti",
+  "title": "Elektrik-Elektronik Mühendisi — Tıbbi Cihazlar — Teknik Satış",
+  "headline": "Elektrik Mühendisliği | Tıbbi Cihazlar | Teknik Satış ve İş Geliştirme | PCB Tasarımı ve Gömülü Sistemler",
+  "pitch": "Şemadan lehimlenmiş karta: analog, güç ve gömülü elektronik.",
+  "location": "Sakarya, Türkiye",
+  "email": "nawarwitti03@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/nawar-witti/",
+  "website": "https://nawarwitti.me",
+  "cv": "/cv.pdf",
+  "summary": "Analog devre tasarımı, PCB prototipleme ve gömülü sistemlere odaklanan, TÜBİTAK destekli bir biyosinyal cihazı projesini yürüten son sınıf Elektrik-Elektronik Mühendisliği öğrencisi. 2017'den beri bir tıbbi cihaz ticaret şirketinde ortak.",
+  "about": [
+    "Sakarya Uygulamalı Bilimler Üniversitesi'nde son sınıf Elektrik-Elektronik Mühendisliği öğrencisiyim; 2027'de mezun olmayı bekliyorum. Odak alanlarım analog devre tasarımı, PCB prototipleme ve gömülü sistemler.",
+    "TÜBİTAK 2209-A destekli bir araştırma projesini yürütüyorum: EMG, EKG ve EOG sinyallerini tek bir ortak analog ön uç üzerinden okuyan ve Bluetooth Low Energy ile gönderen kablosuz bir cihaz.",
+    "2017'den beri ailemin tıbbi cihaz şirketi Şam Şerif'te de çalışıyorum. Satış Müdür Yardımcısı olarak başladım; bugün Genel Müdür ve ortağım. Uluslararası üretici ve tedarikçilerle satın alma süreçlerini, hastanelere, kliniklere ve distribütörlere B2B satışı ve ihale hazırlığından satış sonrasına kadar teknik desteği yürütüyorum.",
+    "Sunduğum şey bu: Elektroniği tasarlayıp kurabilirim ve tıbbi cihazların nasıl satın alındığını, satıldığını ve kullanıldığını bilirim."
+  ],
+  "quickFacts": [
+    { "value": "TÜBİTAK 2209-A", "label": "Destekli araştırma projesi" },
+    { "value": "2017'den beri", "label": "Tıbbi cihaz sektöründe 9+ yıl" },
+    {
+      "value": "Mezuniyet 2027",
+      "label": "Son sınıf EEM öğrencisi, Sakarya Uygulamalı Bilimler Üniversitesi"
+    },
+    { "value": "AR · TR · EN", "label": "Arapça, Türkçe, İngilizce" }
+  ],
+  "education": [
+    {
+      "degree": "Lisans, Elektrik-Elektronik Mühendisliği",
+      "school": "Sakarya Uygulamalı Bilimler Üniversitesi",
+      "dates": "Beklenen mezuniyet: 2027"
+    }
+  ],
+  "certifications": [
+    { "name": "Introduction to Biomedical Engineering" },
+    { "name": "The Arduino Platform and C Programming" },
+    {
+      "name": "C for Everyone, Part 1: Programming Fundamentals",
+      "issuer": "University of California, Santa Cruz"
+    },
+    { "name": "Introduction to HTML5" },
+    { "name": "IAB Digital Marketing and Media Foundations" },
+    { "name": "Work Smarter with Microsoft Word", "issuer": "Microsoft" }
+  ]
+}

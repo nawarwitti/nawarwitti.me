@@ -1,0 +1,94 @@
+{
+  "lang": "tr",
+  "skipLink": "İçeriğe geç",
+  "nav": {
+    "label": "Ana menü",
+    "projects": "Projeler",
+    "experience": "Deneyim",
+    "about": "Hakkımda",
+    "contact": "İletişim",
+    "cv": "CV indir",
+    "languageLabel": "Dil"
+  },
+  "langNames": { "en": "EN", "tr": "TR" },
+  "ogLocales": { "en": "en_US", "tr": "tr_TR" },
+  "personJobTitle": "Elektrik-Elektronik Mühendisi",
+  "footer": {
+    "copyright": "© {year} Nawar Witti",
+    "domain": "nawarwitti.me"
+  },
+  "home": {
+    "metaTitle": "Nawar Witti — Elektrik-Elektronik Mühendisi · Tıbbi Cihazlar",
+    "metaDescription": "Tıbbi donanımı ve tıbbi cihaz pazarını anlayan elektronik mühendisi. Analog devreler, PCB prototipleme, gömülü sistemler — ve tıbbi cihaz ticaretinde 9+ yıl.",
+    "eyebrow": "Elektrik-Elektronik Mühendisi — Tıbbi Cihazlar — Teknik Satış",
+    "buttons": { "projects": "Projeleri gör", "cv": "CV indir", "linkedin": "LinkedIn" },
+    "featuredLabel": "Öne çıkan proje",
+    "signalChainLabel": "Sinyal zinciri",
+    "caseStudyLink": "Proje detaylarını oku →",
+    "selectedHeading": "Laboratuvardan diğer projeler",
+    "allProjectsLink": "Tüm projeler →",
+    "experienceHeading": "Deneyim",
+    "experienceLink": "Tüm deneyim →",
+    "skillsHeading": "Yetkinlikler"
+  },
+  "contact": {
+    "heading": "Birlikte bir şeyler üretelim.",
+    "text": "Elektrik mühendisliği, teknik satış ve ürün geliştirme alanlarındaki pozisyonlara açığım — özellikle tıbbi ve raylı sistem donanımında.",
+    "linkedin": "LinkedIn",
+    "metaTitle": "İletişim — Nawar Witti",
+    "metaDescription": "Nawar Witti ile e-posta veya LinkedIn üzerinden iletişime geçin.",
+    "pageEyebrow": "İletişim",
+    "emailLabel": "E-posta",
+    "linkedinLabel": "LinkedIn",
+    "locationLabel": "Konum",
+    "cvLabel": "CV"
+  },
+  "projects": {
+    "metaTitle": "Projeler — Nawar Witti",
+    "metaDescription": "Nawar Witti'nin elektronik projeleri: biyosinyal ölçümü, güç elektroniği, PCB üretimi, tersine mühendislik ve motor kontrolü.",
+    "eyebrow": "Projeler",
+    "heading": "Tasarladığım, kurduğum ve test ettiğim donanımlar",
+    "filterLabel": "Etikete göre filtrele",
+    "filterAll": "Tümü",
+    "noneFound": "Bu etikete sahip proje yok.",
+    "countShown": "{n} proje gösteriliyor",
+    "status": { "Completed": "Tamamlandı", "In progress": "Devam ediyor" }
+  },
+  "project": {
+    "back": "← Tüm projeler",
+    "backHome": "← Ana sayfaya dön",
+    "problem": "Problem",
+    "approach": "Fikir",
+    "chain": "Sinyal zinciri",
+    "whatIDid": "Neler yaptım",
+    "results": "Şu ana kadarki sonuçlar",
+    "resultsCompleted": "Sonuçlar",
+    "tools": "Araçlar ve parçalar",
+    "gallery": "Galeri",
+    "nextSteps": "Sonraki adımlar",
+    "dateLabel": "Tarih"
+  },
+  "experience": {
+    "metaTitle": "Deneyim — Nawar Witti",
+    "metaDescription": "Nawar Witti'nin deneyimi: ÖzBir Rail ve GP Tech'te elektrik mühendisliği stajları ve Şam Şerif'te tıbbi cihaz ticaretinde 9+ yıl.",
+    "eyebrow": "Deneyim",
+    "heading": "Mühendislik ve tıbbi cihaz sektörü",
+    "relatedProjects": "İlgili projeler"
+  },
+  "about": {
+    "metaTitle": "Hakkımda — Nawar Witti",
+    "metaDescription": "Nawar Witti hakkında: elektrik-elektronik mühendisliği öğrencisi ve 2017'den beri bir tıbbi cihaz ticaret şirketinde ortak.",
+    "eyebrow": "Hakkımda",
+    "heading": "Pazarı da tanıyan bir mühendis",
+    "skillsHeading": "Yetkinlikler",
+    "educationHeading": "Eğitim",
+    "certificationsHeading": "Sertifikalar"
+  },
+  "notFound": {
+    "metaTitle": "Sayfa bulunamadı — Nawar Witti",
+    "metaDescription": "Bu sayfa mevcut değil.",
+    "eyebrow": "404",
+    "heading": "Düz çizgi. Bu sayfa mevcut değil.",
+    "link": "← Ana sayfaya dön"
+  }
+}

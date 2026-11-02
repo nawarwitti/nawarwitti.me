@@ -2,15 +2,16 @@
 import Placeholder from './Placeholder.astro';
 import StatusBadge from './StatusBadge.astro';
 import Tag from './Tag.astro';
-import { projectUrl, type Project, type Ui } from '../lib/content';
+import { projectUrl, type Locale, type Project, type Ui } from '../lib/content';
 
 interface Props {
   ui: Ui;
+  locale: Locale;
   project: Project;
   showTags?: boolean;
   headingLevel?: 'h2' | 'h3';
 }
-const { ui, project, showTags = false, headingLevel = 'h3' } = Astro.props;
+const { ui, locale, project, showTags = false, headingLevel = 'h3' } = Astro.props;
 const p = project.data;
 const Heading = headingLevel;
 ---
@@ -30,7 +31,10 @@ const Heading = headingLevel;
   <div class="flex flex-grow flex-col gap-2.5 p-5">
     <p class="font-mono text-xs text-pulse-text-light">{p.tags[0]}</p>
     <Heading class="text-[21px] leading-[1.25]">
-      <a href={projectUrl(project.id)} class="text-ink no-underline after:absolute after:inset-0">
+      <a
+        href={projectUrl(locale, project.slug)}
+        class="text-ink no-underline after:absolute after:inset-0"
+      >
         {p.title}
       </a>
     </Heading>

@@ -1,0 +1,76 @@
+{
+  "jobs": [
+    {
+      "company": "ÖzBir Rail",
+      "location": "Arifiye, Sakarya",
+      "order": 1,
+      "summary": "Üretim hattındaki trenlerin elektrik tesisatını takip ediyor, gelen elektrik malzemelerini kontrol ediyor ve vagon içi kablo yönlendirmesine destek veriyorum.",
+      "roles": [{ "role": "Elektrik Mühendisliği Stajyeri", "dates": "Eyl 2026 – Günümüz" }],
+      "bullets": [
+        "Üretim hattındaki trenlerin elektrik tesisatı ilerlemesini takip ediyor ve elektrik teknisyenleriyle koordinasyon sağlıyorum.",
+        "Gelen elektrik malzemelerini ve ekipmanlarını üretimde kullanılmadan önce kontrol edip doğruluyorum.",
+        "Malzeme taleplerinden satın alma sipariş listeleri hazırlıyor ve stok sayımları yapıyorum.",
+        "Vagonların içinde kablo yönlendirme ve elektrik tesisatı işlerinde teknisyenlere yardımcı oluyorum."
+      ]
+    },
+    {
+      "company": "PSB Anatolia",
+      "location": "Sakarya",
+      "order": 2,
+      "summary": "PSB Anatolia peyzaj fuarı için yabancı katılımcıları ve resmi davetleri koordine ettim, ziyaretçi istatistiklerini raporladım.",
+      "roles": [{ "role": "Uluslararası İlişkiler Direktörü", "dates": "Ağu 2025 – Eki 2026" }],
+      "bullets": [
+        "PSB Anatolia peyzaj fuarının uluslararası ilişkilerini koordine ettim — yabancı katılımcılar için delege verileri ve resmi davetler.",
+        "Erişimi değerlendirmek ve pazarlamaya yön vermek için kullanılan ziyaretçi istatistikleri raporlarını hazırladım."
+      ]
+    },
+    {
+      "company": "Şam Şerif",
+      "location": "Hatay",
+      "order": 3,
+      "summary": "Tıbbi cihaz ve hastane ekipmanlarının satın alımı, uluslararası ticareti ve B2B satışı — ihale hazırlığından satış sonrası desteğe kadar.",
+      "roles": [
+        { "role": "Genel Müdür ve Ortak", "dates": "Nis 2024 – Günümüz" },
+        { "role": "Tıbbi Cihaz Satış Uzmanı", "dates": "Ara 2018 – Günümüz" },
+        { "role": "Satış Müdürü", "dates": "Ara 2017 – Ara 2018" },
+        { "role": "Satış Müdür Yardımcısı", "dates": "Oca 2017 – Ara 2017" }
+      ],
+      "bullets": [
+        "Uluslararası üretici ve tedarikçilerle tıbbi cihaz ve hastane ekipmanlarının uçtan uca satın alma ve ticaretini yönetiyorum.",
+        "Hastaneler, klinikler ve distribütörlerle B2B satış ve iş geliştirme faaliyetlerini yürütüyorum.",
+        "İhale hazırlığı ve tekliflerden satış sonrası desteğe kadar teknik danışmanlık sağlıyorum.",
+        "2017'de aile şirketine katıldım ve Genel Müdür ve ortak konumuna yükseldim."
+      ]
+    },
+    {
+      "company": "GP Tech",
+      "location": "Düzce",
+      "order": 4,
+      "summary": "Güç elektroniği, op-amp devreleri, tersine mühendislik ve şirket içi PCB üretimi.",
+      "roles": [{ "role": "Elektrik Mühendisliği Stajyeri", "dates": "Ağu 2024 – Eyl 2024" }],
+      "bullets": [
+        "Güç elektroniği ve ölçüm: DC-DC buck dönüştürücü tasarımı ve op-amp tabanlı gerilim/akım ölçüm devreleri.",
+        "Ticari bir voltmetre/ampermetre modülünü tersine mühendislikle inceledim ve şemasını Proteus'ta yeniden çizdim.",
+        "EasyEDA'da bir PCB tasarlayıp şirket içinde ürettim; DC motor kontrolü için transistörlü bir H-köprüsü kurdum.",
+        "Bir su arıtma tesisi için endüstriyel kontrol panolarını (kontaktörler, motor sürücüler, PLC) inceledim."
+      ],
+      "links": [
+        { "label": "Buck dönüştürücü ve ölçüm devreleri", "href": "/tr/projects/buck-converter/" },
+        {
+          "label": "Voltmetre/ampermetre tersine mühendisliği",
+          "href": "/tr/projects/voltmeter-reverse-engineering/"
+        },
+        { "label": "Şirket içi PCB üretimi", "href": "/tr/projects/pcb-fabrication/" },
+        { "label": "Transistörlü H-köprüsü", "href": "/tr/projects/h-bridge/" }
+      ]
+    },
+    {
+      "company": "Akaya AI Community",
+      "location": "Uzaktan",
+      "order": 5,
+      "summary": "Yapay zekâ ve ilgili mühendislik konularında teknik içerik yazdım.",
+      "roles": [{ "role": "İçerik Yazarı (yarı zamanlı)", "dates": "Ara 2023 – Ara 2024" }],
+      "bullets": ["Yapay zekâ ve ilgili mühendislik konularında teknik içerik yazdım."]
+    }
+  ]
+}

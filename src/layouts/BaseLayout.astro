@@ -2,34 +2,33 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getProfile, getUi, DEFAULT_LOCALE } from '../lib/content';
+import { getProfile, getUi, LOCALES, switchLocale, type Locale } from '../lib/content';
 
 interface Props {
   title: string;
   description: string;
+  locale: Locale;
   image?: string;
   type?: 'website' | 'article';
-  locale?: string;
 }
-const {
-  title,
-  description,
-  image = '/og-image.png',
-  type = 'website',
-  locale = DEFAULT_LOCALE,
-} = Astro.props;
+const { title, description, locale, image = '/og-image.png', type = 'website' } = Astro.props;
 
 const ui = await getUi(locale);
-const profile = await getProfile();
+const profile = await getProfile(locale);
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const alternates = LOCALES.map((l) => ({
+  locale: l,
+  href: new URL(switchLocale(Astro.url.pathname, l), Astro.site).href,
+}));
+const otherOgLocales = LOCALES.filter((l) => l !== locale).map((l) => ui.ogLocales[l]);
 
 const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: profile.name,
-  jobTitle: 'Electrical & Electronics Engineer',
+  jobTitle: ui.personJobTitle,
   description: profile.summary,
   url: profile.website,
   email: `mailto:${profile.email}`,
@@ -41,13 +40,17 @@ const person = {
 ---
 
 <!doctype html>
-<html lang={ui.lang}>
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates.map((a) => (
+      <link rel="alternate" hreflang={a.locale} href={a.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#111111" />
@@ -60,7 +63,10 @@ const person = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ui.ogLocales[locale]} />
+    {otherOgLocales.map((l) => (
+      <meta property="og:locale:alternate" content={l} />
+    ))}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -82,7 +88,7 @@ const person = {
     >
       {ui.skipLink}
     </a>
-    <Header ui={ui} name={profile.name} cv={profile.cv} />
+    <Header ui={ui} locale={locale} name={profile.name} cv={profile.cv} />
     <main id="main" class="flex-1">
       <slot />
     </main>

@@ -2,27 +2,30 @@
 import PulseLine from './PulseLine.astro';
 import Placeholder from './Placeholder.astro';
 import QuickFacts from './QuickFacts.astro';
-import type { Profile, Ui } from '../lib/content';
+import { localePath, type Locale, type Profile, type Ui } from '../lib/content';
 
 interface Props {
   ui: Ui;
+  locale: Locale;
   profile: Profile;
 }
-const { ui, profile } = Astro.props;
+const { ui, locale, profile } = Astro.props;
+// The photo column only appears when profile.photo.src is set.
+const photo = profile.photo?.src ? profile.photo : undefined;
 ---
 
 <section class="on-dark bg-carbon text-on-dark">
-  <div class="container-page flex flex-wrap items-center gap-14 pt-16 pb-10 sm:pt-24">
-    <div class="min-w-0 flex-[999_1_560px]">
+  <div class="container-page flex flex-wrap items-center gap-14 pt-16 pb-12 sm:pt-24 sm:pb-16">
+    <div class="max-w-[920px] min-w-0 flex-[999_1_560px]">
       <p class="eyebrow mb-5 text-pulse-text-dark">{ui.home.eyebrow}</p>
-      <h1 class="text-[40px] leading-[1.08] tracking-[-0.01em] sm:text-[52px] lg:text-[60px]">
+      <h1 class="text-[40px] leading-[1.08] tracking-[-0.01em] sm:text-[52px] lg:text-[64px]">
         {profile.pitch}
       </h1>
-      <p class="mt-7 max-w-[620px] text-lg leading-relaxed text-on-dark-2 sm:text-[19px]">
+      <p class="mt-7 max-w-[680px] text-lg leading-relaxed text-on-dark-2 sm:text-[19px]">
         {profile.summary}
       </p>
       <div class="mt-9 flex flex-wrap gap-3.5">
-        <a href="/projects/" class="btn-primary">
+        <a href={localePath(locale, '/projects/')} class="btn-primary">
           {ui.home.buttons.projects}
         </a>
         <a href={profile.cv} download class="btn-outline-dark">
@@ -33,18 +36,20 @@ const { ui, profile } = Astro.props;
         </a>
       </div>
     </div>
-    <div class="flex flex-[1_1_300px] justify-center">
-      <Placeholder
-        label={profile.photo.label}
-        src={profile.photo.src}
-        alt={profile.photo.alt}
-        tone="dark"
-        width={320}
-        height={380}
-        loading="eager"
-        class="h-[380px] w-full max-w-[320px] rounded-[10px]"
-      />
-    </div>
+    {photo && (
+      <div class="flex flex-[1_1_300px] justify-center">
+        <Placeholder
+          label={photo.label}
+          src={photo.src}
+          alt={photo.alt}
+          tone="dark"
+          width={320}
+          height={380}
+          loading="eager"
+          class="h-[380px] w-full max-w-[320px] rounded-[10px]"
+        />
+      </div>
+    )}
   </div>
   <PulseLine variant="hero" animate />
   <QuickFacts facts={profile.quickFacts} />

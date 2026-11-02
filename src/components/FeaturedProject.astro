@@ -1,13 +1,14 @@
 ---
 import Tag from './Tag.astro';
 import StatusBadge from './StatusBadge.astro';
-import { projectUrl, type Project, type Ui } from '../lib/content';
+import { projectUrl, type Locale, type Project, type Ui } from '../lib/content';
 
 interface Props {
   ui: Ui;
+  locale: Locale;
   project: Project;
 }
-const { ui, project } = Astro.props;
+const { ui, locale, project } = Astro.props;
 const p = project.data;
 const stats = p.results.slice(0, 3);
 ---
@@ -34,7 +35,7 @@ const stats = p.results.slice(0, 3);
           </li>
         ))}
       </ul>
-      <a href={projectUrl(project.id)} class="link-light mt-7 inline-block text-base">
+      <a href={projectUrl(locale, project.slug)} class="link-light mt-7 inline-block text-base">
         {ui.home.caseStudyLink}
       </a>
     </div>

@@ -10,7 +10,7 @@ const { items, mode = 'full', ui } = Astro.props;
 ---
 
 <ol class="flex flex-col">
-  {items.map(({ data: job }) =>
+  {items.map((job) =>
     mode === 'preview' ? (
       <li class="flex flex-wrap gap-x-8 gap-y-2 border-t border-divider py-6">
         <p class="flex-[0_0_200px] font-mono text-sm text-ink-3">{companyDates(job.roles)}</p>

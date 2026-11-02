@@ -1,29 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PulseLine from '../components/PulseLine.astro';
-import Timeline from '../components/Timeline.astro';
-import ContactCTA from '../components/ContactCTA.astro';
-import { getExperience, getProfile, getUi } from '../lib/content';
-
-const ui = await getUi();
-const profile = await getProfile();
-const experience = await getExperience();
+import ExperiencePage from '../views/ExperiencePage.astro';
 ---
 
-<BaseLayout title={ui.experience.metaTitle} description={ui.experience.metaDescription}>
-  <section class="on-dark bg-carbon text-on-dark">
-    <div class="container-page pt-16 pb-12 sm:pt-20">
-      <p class="eyebrow mb-4 text-pulse-text-dark">{ui.experience.eyebrow}</p>
-      <h1 class="max-w-[900px] text-[38px] leading-[1.1] sm:text-[54px]">
-        {ui.experience.heading}
-      </h1>
-    </div>
-    <PulseLine variant="title" animate />
-  </section>
-
-  <section class="container-page pt-12 pb-24">
-    <Timeline items={experience} mode="full" ui={ui} />
-  </section>
-
-  <ContactCTA ui={ui} profile={profile} />
-</BaseLayout>
+<ExperiencePage locale="en" />
