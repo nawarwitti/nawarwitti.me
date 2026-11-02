@@ -10,8 +10,10 @@ tags: [Biomedical, Analog, Embedded, BLE]
 featured: true
 order: 1
 cover:
-  label: 'TODO: block diagram (public/projects/biosignal/block-diagram.png)'
-  alt: Block diagram of the biosignal acquisition device
+  label: 'PCB concept (top view)'
+  src: /projects/biosignal/pcb-concept.webp
+  alt: 'Concept drawing of the planned PCB: CD4051 multiplexer, AD620 amplifier, filters and an ESP32 module'
+  fit: contain
 problem: Measuring three biosignals — muscle (EMG), heart (EKG) and eye movement (EOG) — normally needs three separate signal chains. That means more cost, more size and more power.
 approach: One shared analog front-end that switches between the three signals, then sends the readings over Bluetooth Low Energy (BLE).
 chain:
@@ -35,6 +37,14 @@ results:
 resultsNote: Simulation results. CMRR values use datasheet-based models.
 tools: [AD620, CD4051, ESP32, BLE, LTspice, Proteus]
 gallery:
+  - label: 'PCB concept, top view — concept drawing, not the final layout'
+    src: /projects/biosignal/pcb-concept.webp
+    alt: 'Concept drawing of the planned PCB: electrode inputs, CD4051, AD620, high-pass filter, TL074, ±9 V supply and an ESP32 module'
+    fit: contain
+  - label: 'Device concept: enclosure, electrodes and phone app over BLE — concept drawing'
+    src: /projects/biosignal/device-concept.webp
+    alt: 'Concept drawing of the device enclosure with five electrode inputs and a phone app showing EKG and EMG signals over BLE'
+    fit: contain
   - label: 'TODO: frequency response plot (public/projects/biosignal/frequency-response.png)'
   - label: 'TODO: CMRR plot (public/projects/biosignal/cmrr.png)'
   - label: 'TODO: breadboard photo (public/projects/biosignal/breadboard.jpg)'

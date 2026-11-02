@@ -38,17 +38,17 @@ Other useful commands:
 
 ## 2. Where the content is
 
-The site has two languages: **English** at `/` and **Turkish** at `/tr/`.
-Every content file exists twice: one for English (`en`) and one for Turkish (`tr`).
-**When you change something, change it in both files.**
+The site has three languages: **English** at `/`, **Turkish** at `/tr/` and **Arabic** at `/ar/` (right-to-left).
+Every content file exists three times: `en`, `tr` and `ar`.
+**When you change something, change it in all three files.**
 
-| What you want to change                                  | English file                     | Turkish file                     |
-| -------------------------------------------------------- | -------------------------------- | -------------------------------- |
-| Name, pitch, summary, email, LinkedIn, About text, quick facts, education, certifications | `src/content/profile/en.json` | `src/content/profile/tr.json` |
-| Jobs and roles (Experience page and Home)                | `src/content/experience/en.json` | `src/content/experience/tr.json` |
-| Skills and languages                                     | `src/content/skills/en.json`     | `src/content/skills/tr.json`     |
-| Projects (one file per project)                          | `src/content/projects/en/*.md`   | `src/content/projects/tr/*.md`   |
-| Menu words, buttons, headings, page titles and descriptions (SEO) | `src/content/ui/en.json` | `src/content/ui/tr.json`     |
+| What you want to change | English file | Turkish / Arabic file |
+| --- | --- | --- |
+| Name, pitch, summary, email, LinkedIn, About text, quick facts, education, certifications | `src/content/profile/en.json` | `profile/tr.json`, `profile/ar.json` |
+| Jobs and roles (Experience page and Home)                | `src/content/experience/en.json` | `experience/tr.json`, `experience/ar.json` |
+| Skills and languages                                     | `src/content/skills/en.json`     | `skills/tr.json`, `skills/ar.json` |
+| Projects (one file per project)                          | `src/content/projects/en/*.md`   | `projects/tr/*.md`, `projects/ar/*.md` |
+| Menu words, buttons, headings, page titles and descriptions (SEO) | `src/content/ui/en.json` | `ui/tr.json`, `ui/ar.json` |
 | The CV that visitors download (same file for both)       | `public/cv.pdf`                  | `public/cv.pdf`                  |
 | Images (same files for both)                             | `public/` (see section 5)        | `public/`                        |
 
@@ -99,8 +99,8 @@ Adding a project = adding **one file per language**. No code changes.
    `my-new-project.md` → `https://nawarwitti.me/projects/my-new-project/` and `https://nawarwitti.me/tr/projects/my-new-project/`
    (use small letters and dashes, no spaces).
 3. Change the fields between the two `---` lines (see the example below).
-4. Copy the file to `src/content/projects/tr/` **with the same file name** and translate the text to Turkish.
-   If you skip this step, the Turkish site shows the English version until you add it.
+4. Copy the file to `src/content/projects/tr/` and `src/content/projects/ar/` **with the same file name** and translate the text.
+   If you skip this step, that language shows the English version until you add it.
 
 ```yaml
 ---
@@ -169,7 +169,7 @@ The photo then appears next to the headline on Home and on the About page.
 ### Project images
 
 1. Put the files in `public/projects/...`, for example `public/projects/biosignal/block-diagram.png`.
-2. In the project's `.md` file — in **both** `projects/en/` and `projects/tr/` — add `src:` to the `cover` or `gallery` item (the path starts with `/` and does **not** include `public`):
+2. In the project's `.md` file — in **all** of `projects/en/`, `projects/tr/` and `projects/ar/` — add `src:` to the `cover` or `gallery` item (the path starts with `/` and does **not** include `public`):
 
 ```yaml
 cover:
@@ -305,10 +305,11 @@ GitHub rebuilds and publishes the site automatically in about 1–2 minutes (wat
 
 - English pages: `https://nawarwitti.me/...`
 - Turkish pages: `https://nawarwitti.me/tr/...`
-- The **EN · TR** buttons in the header switch to the same page in the other language.
+- Arabic pages: `https://nawarwitti.me/ar/...` — right-to-left, with Arabic fonts (IBM Plex Sans Arabic, Noto Naskh Arabic)
+- The **EN · TR · AR** buttons in the header switch to the same page in the other language.
 - Search engines are told that each page has an English and a Turkish version (hreflang), and the sitemap lists both.
 
-To add a third language later (for example Arabic), a developer needs to add it to `LOCALES` in `src/lib/content.ts` and `locales` in `astro.config.mjs`, create `src/pages/<lang>/`, and add `<lang>.json` / `<lang>/` files in every content folder.
+To add another language later, a developer needs to add it to `LOCALES` in `src/lib/content.ts` and `locales` in `astro.config.mjs`, create `src/pages/<lang>/`, and add `<lang>.json` / `<lang>/` files in every content folder. For a right-to-left language, also add it to `isRtl()` in `src/lib/content.ts`.
 
 ---
 
@@ -320,7 +321,7 @@ src/content/            ALL text and data, one file or folder per language (edit
 src/content.config.ts   Rules for the content files (what fields exist)
 src/components/         Hero, QuickFacts, ProjectCard, Timeline, SkillGroup, ContactCTA, Tag, StatusBadge, PulseLine, Placeholder…
 src/layouts/            Page frame: <head>, SEO tags, header, footer
-src/pages/              One small file per URL (English) and src/pages/tr/ (Turkish)
+src/pages/              One small file per URL (English), src/pages/tr/ (Turkish), src/pages/ar/ (Arabic)
 src/views/              The page templates shared by both languages
 src/styles/global.css   Colours and fonts ("Carbon and pulse" design tokens)
 .github/workflows/      Automatic deploy to GitHub Pages

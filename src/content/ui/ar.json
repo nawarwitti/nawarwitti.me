@@ -1,0 +1,94 @@
+{
+  "lang": "ar",
+  "skipLink": "انتقل إلى المحتوى",
+  "nav": {
+    "label": "القائمة الرئيسية",
+    "projects": "المشاريع",
+    "experience": "الخبرات",
+    "about": "عنّي",
+    "contact": "تواصل",
+    "cv": "تحميل السيرة الذاتية",
+    "languageLabel": "اللغة"
+  },
+  "langNames": { "en": "EN", "tr": "TR", "ar": "AR" },
+  "ogLocales": { "en": "en_US", "tr": "tr_TR", "ar": "ar_AR" },
+  "personJobTitle": "مهندس كهرباء وإلكترونيات",
+  "footer": {
+    "copyright": "© {year} Nawar Witti",
+    "domain": "nawarwitti.me"
+  },
+  "home": {
+    "metaTitle": "نوار ويتي — مهندس كهرباء وإلكترونيات · الأجهزة الطبية",
+    "metaDescription": "مهندس إلكترونيات يفهم العتاد الطبي وسوق الأجهزة الطبية. دارات تماثلية، نماذج PCB، أنظمة مدمجة — وأكثر من 9 سنوات في تجارة الأجهزة الطبية.",
+    "eyebrow": "مهندس كهرباء وإلكترونيات — أجهزة طبية — مبيعات تقنية",
+    "buttons": { "projects": "عرض المشاريع", "cv": "تحميل السيرة الذاتية", "linkedin": "LinkedIn" },
+    "featuredLabel": "المشروع الأبرز",
+    "signalChainLabel": "سلسلة الإشارة",
+    "caseStudyLink": "اقرأ تفاصيل المشروع ←",
+    "selectedHeading": "مشاريع أخرى من المختبر",
+    "allProjectsLink": "كل المشاريع ←",
+    "experienceHeading": "الخبرات",
+    "experienceLink": "كل الخبرات ←",
+    "skillsHeading": "المهارات"
+  },
+  "contact": {
+    "heading": "لنصنع شيئاً معاً.",
+    "text": "منفتح على فرص العمل في الهندسة الكهربائية والمبيعات التقنية وتطوير المنتجات — خاصةً في عتاد الأجهزة الطبية والسكك الحديدية.",
+    "linkedin": "LinkedIn",
+    "metaTitle": "تواصل — نوار ويتي",
+    "metaDescription": "تواصل مع نوار ويتي عبر البريد الإلكتروني أو LinkedIn.",
+    "pageEyebrow": "تواصل",
+    "emailLabel": "البريد الإلكتروني",
+    "linkedinLabel": "LinkedIn",
+    "locationLabel": "الموقع",
+    "cvLabel": "السيرة الذاتية"
+  },
+  "projects": {
+    "metaTitle": "المشاريع — نوار ويتي",
+    "metaDescription": "مشاريع نوار ويتي الإلكترونية: قياس الإشارات الحيوية، إلكترونيات القدرة، تصنيع PCB، الهندسة العكسية والتحكم بالمحركات.",
+    "eyebrow": "المشاريع",
+    "heading": "عتاد صمّمته وبنيته واختبرته",
+    "filterLabel": "تصفية حسب الوسم",
+    "filterAll": "الكل",
+    "noneFound": "لا توجد مشاريع بهذا الوسم.",
+    "countShown": "يتم عرض {n} مشاريع",
+    "status": { "Completed": "مكتمل", "In progress": "قيد التنفيذ" }
+  },
+  "project": {
+    "back": "→ كل المشاريع",
+    "backHome": "→ العودة إلى الرئيسية",
+    "problem": "المشكلة",
+    "approach": "الفكرة",
+    "chain": "سلسلة الإشارة",
+    "whatIDid": "ماذا فعلت",
+    "results": "النتائج حتى الآن",
+    "resultsCompleted": "النتائج",
+    "tools": "الأدوات والقطع",
+    "gallery": "معرض الصور",
+    "nextSteps": "الخطوات القادمة",
+    "dateLabel": "التاريخ"
+  },
+  "experience": {
+    "metaTitle": "الخبرات — نوار ويتي",
+    "metaDescription": "خبرات نوار ويتي: تدريب في الهندسة الكهربائية لدى ÖzBir Rail وGP Tech، وأكثر من 9 سنوات في تجارة الأجهزة الطبية لدى Şam Şerif.",
+    "eyebrow": "الخبرات",
+    "heading": "الهندسة وقطاع الأجهزة الطبية",
+    "relatedProjects": "مشاريع مرتبطة"
+  },
+  "about": {
+    "metaTitle": "عنّي — نوار ويتي",
+    "metaDescription": "عن نوار ويتي: طالب هندسة كهرباء وإلكترونيات وشريك في شركة لتجارة الأجهزة الطبية منذ 2017.",
+    "eyebrow": "عنّي",
+    "heading": "مهندس يعرف السوق أيضاً",
+    "skillsHeading": "المهارات",
+    "educationHeading": "التعليم",
+    "certificationsHeading": "الشهادات"
+  },
+  "notFound": {
+    "metaTitle": "الصفحة غير موجودة — نوار ويتي",
+    "metaDescription": "هذه الصفحة غير موجودة.",
+    "eyebrow": "404",
+    "heading": "خط مستقيم. هذه الصفحة غير موجودة.",
+    "link": "العودة إلى الرئيسية"
+  }
+}

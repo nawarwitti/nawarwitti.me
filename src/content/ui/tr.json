@@ -10,8 +10,16 @@
     "cv": "CV indir",
     "languageLabel": "Dil"
   },
-  "langNames": { "en": "EN", "tr": "TR" },
-  "ogLocales": { "en": "en_US", "tr": "tr_TR" },
+  "langNames": {
+    "en": "EN",
+    "tr": "TR",
+    "ar": "AR"
+  },
+  "ogLocales": {
+    "en": "en_US",
+    "tr": "tr_TR",
+    "ar": "ar_AR"
+  },
   "personJobTitle": "Elektrik-Elektronik Mühendisi",
   "footer": {
     "copyright": "© {year} Nawar Witti",
@@ -21,7 +29,11 @@
     "metaTitle": "Nawar Witti — Elektrik-Elektronik Mühendisi · Tıbbi Cihazlar",
     "metaDescription": "Tıbbi donanımı ve tıbbi cihaz pazarını anlayan elektronik mühendisi. Analog devreler, PCB prototipleme, gömülü sistemler — ve tıbbi cihaz ticaretinde 9+ yıl.",
     "eyebrow": "Elektrik-Elektronik Mühendisi — Tıbbi Cihazlar — Teknik Satış",
-    "buttons": { "projects": "Projeleri gör", "cv": "CV indir", "linkedin": "LinkedIn" },
+    "buttons": {
+      "projects": "Projeleri gör",
+      "cv": "CV indir",
+      "linkedin": "LinkedIn"
+    },
     "featuredLabel": "Öne çıkan proje",
     "signalChainLabel": "Sinyal zinciri",
     "caseStudyLink": "Proje detaylarını oku →",
@@ -52,7 +64,10 @@
     "filterAll": "Tümü",
     "noneFound": "Bu etikete sahip proje yok.",
     "countShown": "{n} proje gösteriliyor",
-    "status": { "Completed": "Tamamlandı", "In progress": "Devam ediyor" }
+    "status": {
+      "Completed": "Tamamlandı",
+      "In progress": "Devam ediyor"
+    }
   },
   "project": {
     "back": "← Tüm projeler",

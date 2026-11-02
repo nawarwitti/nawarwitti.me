@@ -1,7 +1,7 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import type uiEn from '../content/ui/en.json';
 
-export const LOCALES = ['en', 'tr'] as const;
+export const LOCALES = ['en', 'tr', 'ar'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
@@ -63,10 +63,16 @@ export function projectUrl(locale: Locale, slug: string) {
   return localePath(locale, `/projects/${slug}/`);
 }
 
-/** The same page in another language: '/tr/about/' ↔ '/about/'. */
+/** The same page in another language: '/tr/about/' ↔ '/ar/about/' ↔ '/about/'. */
 export function switchLocale(pathname: string, target: Locale) {
-  const bare = pathname.replace(/^\/(tr)(?=\/|$)/, '') || '/';
+  const prefixed = LOCALES.filter((l) => l !== DEFAULT_LOCALE).join('|');
+  const bare = pathname.replace(new RegExp(`^/(${prefixed})(?=/|$)`), '') || '/';
   return localePath(target, bare);
+}
+
+/** Languages written right-to-left. */
+export function isRtl(locale: Locale) {
+  return locale === 'ar';
 }
 
 /** Spans from the oldest start to the newest end of a company's roles, e.g. "Jan 2017 – Present". */

@@ -97,11 +97,13 @@
   },
   "langNames": {
     "en": "EN",
-    "tr": "TR"
+    "tr": "TR",
+    "ar": "AR"
   },
   "ogLocales": {
     "en": "en_US",
-    "tr": "tr_TR"
+    "tr": "tr_TR",
+    "ar": "ar_AR"
   },
   "personJobTitle": "Electrical & Electronics Engineer"
 }

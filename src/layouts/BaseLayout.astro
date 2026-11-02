@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getProfile, getUi, LOCALES, switchLocale, type Locale } from '../lib/content';
+import { getProfile, getUi, isRtl, LOCALES, switchLocale, type Locale } from '../lib/content';
 
 interface Props {
   title: string;
@@ -40,7 +40,7 @@ const person = {
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html lang={locale} dir={isRtl(locale) ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -78,13 +78,19 @@ const person = {
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap"
     />
+    {locale === 'ar' && (
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@600&display=swap"
+      />
+    )}
 
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
   </head>
   <body class="flex min-h-screen flex-col">
     <a
       href="#main"
-      class="sr-only z-50 rounded-[6px] bg-pulse px-4 py-3 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      class="sr-only z-50 rounded-[6px] bg-pulse px-4 py-3 text-white focus:not-sr-only focus:fixed focus:top-3 focus:start-3"
     >
       {ui.skipLink}
     </a>

@@ -123,7 +123,7 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
     {p.whatIDid.length > 0 && (
       <div>
         <h2 class="mb-5 text-[28px] sm:text-[32px]">{ui.project.whatIDid}</h2>
-        <ul class="flex list-disc flex-col gap-3.5 pl-5 text-base leading-relaxed text-[#2E2E2A] marker:text-pulse">
+        <ul class="flex list-disc flex-col gap-3.5 ps-5 text-base leading-relaxed text-[#2E2E2A] marker:text-pulse">
           {p.whatIDid.map((item) => (
             <li>{item}</li>
           ))}
@@ -134,7 +134,7 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
       {p.nextSteps.length > 0 && (
         <>
           <h2 class="mb-5 text-[28px] sm:text-[32px]">{ui.project.nextSteps}</h2>
-          <ul class="flex list-disc flex-col gap-3.5 pl-5 text-base leading-relaxed text-[#2E2E2A] marker:text-ink-3">
+          <ul class="flex list-disc flex-col gap-3.5 ps-5 text-base leading-relaxed text-[#2E2E2A] marker:text-ink-3">
             {p.nextSteps.map((item) => (
               <li>{item}</li>
             ))}
@@ -236,11 +236,11 @@ const gallery = p.gallery.length > 0 ? p.gallery : [p.cover];
   }
   .prose-body :global(ul) {
     list-style: disc;
-    padding-left: 20px;
+    padding-inline-start: 20px;
   }
   .prose-body :global(ol) {
     list-style: decimal;
-    padding-left: 20px;
+    padding-inline-start: 20px;
   }
   .prose-body :global(a) {
     color: var(--color-pulse-text-light);

@@ -10,7 +10,8 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 - [x] **Şam Şerif title confirmed:** "General Manager & Partner" (used on the site).
 - [ ] **Match the title in the CV and on LinkedIn:** the CV says "Partner & Business Development Manager" and LinkedIn says "General Manager". Change both to "General Manager & Partner".
 - [ ] **Proofread the Turkish version** (`/tr/`). The Turkish text was translated from the English plan — check it reads naturally to you, especially technical terms and job titles (`src/content/*/tr.json`, `src/content/projects/tr/`).
-- [ ] **Push to your GitHub and turn on Pages + HTTPS** (README section 6).
+- [ ] **Proofread the Arabic version** (`/ar/`). Check the wording, job titles and month names (`src/content/*/ar.json`, `src/content/projects/ar/`). The name in the header stays "Nawar Witti" in Latin letters; page titles use "نوار ويتي" — change it if you prefer another spelling.
+- [x] **Pushed to GitHub, Pages + custom domain + HTTPS on.** After each change run `git push`.
 
 ## 2. Project images
 
@@ -18,7 +19,8 @@ Put each image once in `public/`, then add its `src:` line in **both** language 
 
 ### P1 — Wireless EMG/EKG/EOG device (`biosignal-device.md`)
 
-- [ ] Block diagram → `public/projects/biosignal/block-diagram.png` (cover image)
+- [x] Concept drawings (PCB top view + device/app) — added as cover and gallery, labelled as concept
+- [ ] Optional: real block diagram → `public/projects/biosignal/block-diagram.png`
 - [ ] Frequency-response plot → `public/projects/biosignal/frequency-response.png`
 - [ ] CMRR plot → `public/projects/biosignal/cmrr.png`
 - [ ] Breadboard photo(s) → `public/projects/biosignal/breadboard.jpg`
@@ -64,6 +66,7 @@ Put each image once in `public/`, then add its `src:` line in **both** language 
 ## 5. Phase 2 (later, from the plan)
 
 - [x] Turkish version at `/tr/` (README section 9).
+- [x] Arabic version at `/ar/`.
 - [ ] `/notes` section for short technical write-ups or explainer videos.
 - [ ] Optional full-dark theme toggle.
 - [ ] Optional contact form (for example Formspree).

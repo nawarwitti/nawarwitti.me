@@ -50,6 +50,20 @@
   .on-dark :focus-visible {
     outline-color: var(--color-pulse-text-dark);
   }
+
+  /* Arabic: Arabic-script fonts (Latin text like part numbers still uses the Latin fonts),
+     no letter-spacing (it breaks joined Arabic letters), slightly taller lines. */
+  html[lang='ar'] {
+    --font-serif: 'Noto Naskh Arabic', 'Source Serif 4', Georgia, serif;
+    --font-sans: 'IBM Plex Sans Arabic', Inter, system-ui, sans-serif;
+    --font-mono: 'IBM Plex Sans Arabic', 'JetBrains Mono', ui-monospace, monospace;
+  }
+  html[lang='ar'] body {
+    line-height: 1.7;
+  }
+  html[lang='ar'] * {
+    letter-spacing: 0 !important;
+  }
 }
 
 @utility container-page {

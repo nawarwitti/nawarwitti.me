@@ -10,8 +10,10 @@ tags: [Biyomedikal, Analog, Gömülü, BLE]
 featured: true
 order: 1
 cover:
-  label: 'TODO: blok diyagramı (public/projects/biosignal/block-diagram.png)'
-  alt: Biyosinyal ölçüm cihazının blok diyagramı
+  label: 'PCB konsepti (üstten görünüm)'
+  src: /projects/biosignal/pcb-concept.webp
+  alt: "Planlanan PCB'nin konsept çizimi: CD4051 çoklayıcı, AD620 yükselteç, filtreler ve ESP32 modülü"
+  fit: contain
 problem: Üç biyosinyali — kas (EMG), kalp (EKG) ve göz hareketi (EOG) — ölçmek normalde üç ayrı sinyal zinciri gerektirir. Bu da daha fazla maliyet, boyut ve güç demektir.
 approach: Üç sinyal arasında geçiş yapan tek bir ortak analog ön uç; ölçümler ardından Bluetooth Low Energy (BLE) ile gönderilir.
 chain:
@@ -35,6 +37,14 @@ results:
 resultsNote: Simülasyon sonuçları. CMRR değerleri veri sayfası tabanlı modellere dayanır.
 tools: [AD620, CD4051, ESP32, BLE, LTspice, Proteus]
 gallery:
+  - label: 'PCB konsepti, üstten görünüm — konsept çizim, nihai yerleşim değildir'
+    src: /projects/biosignal/pcb-concept.webp
+    alt: "Planlanan PCB'nin konsept çizimi: elektrot girişleri, CD4051, AD620, yüksek geçiren filtre, TL074, ±9 V besleme ve ESP32 modülü"
+    fit: contain
+  - label: 'Cihaz konsepti: kutu, elektrotlar ve BLE ile mobil uygulama — konsept çizim'
+    src: /projects/biosignal/device-concept.webp
+    alt: 'Beş elektrot girişli cihaz kutusunun ve BLE ile EKG ve EMG sinyallerini gösteren mobil uygulamanın konsept çizimi'
+    fit: contain
   - label: 'TODO: frekans yanıtı grafiği (public/projects/biosignal/frequency-response.png)'
   - label: 'TODO: CMRR grafiği (public/projects/biosignal/cmrr.png)'
   - label: 'TODO: breadboard fotoğrafı (public/projects/biosignal/breadboard.jpg)'

@@ -3,9 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PulseLine from '../components/PulseLine.astro';
 import { getUi } from '../lib/content';
 
-// One 404 page for the whole site (GitHub Pages serves a single 404.html), in both languages.
+// One 404 page for the whole site (GitHub Pages serves a single 404.html), in all languages.
 const en = await getUi('en');
 const tr = await getUi('tr');
+const ar = await getUi('ar');
 ---
 
 <BaseLayout title={en.notFound.metaTitle} description={en.notFound.metaDescription} locale="en">
@@ -16,12 +17,18 @@ const tr = await getUi('tr');
       <p lang="tr" class="mt-4 text-lg text-on-dark-2">
         {tr.notFound.heading}
       </p>
+      <p lang="ar" dir="rtl" class="mt-2 text-lg text-on-dark-2">
+        {ar.notFound.heading}
+      </p>
       <div class="mt-10 flex flex-wrap gap-3.5">
         <a href="/" class="btn-primary">
           {en.notFound.link}
         </a>
         <a href="/tr/" lang="tr" class="btn-outline-dark">
           {tr.notFound.link}
+        </a>
+        <a href="/ar/" lang="ar" dir="rtl" class="btn-outline-dark">
+          {ar.notFound.link}
         </a>
       </div>
     </div>
