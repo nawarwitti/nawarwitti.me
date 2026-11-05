@@ -299,6 +299,12 @@ GitHub rebuilds and publishes the site automatically in about 1–2 minutes (wat
 
 - Dark sections have a circuit-board background with red "signals" running along the traces: `src/components/CircuitBackdrop.astro`.
 - The red pulse lines have a moving "heart monitor" blip, the home headline appears word by word, sections fade up as you scroll, project cards lift on hover, and the signal chain of the featured project lights up stage by stage.
+- More effects, all in `src/scripts/effects.ts` (styles at the end of `global.css`):
+  - **Circuit trace:** a copper line down the side of the page fills with "current" as you scroll, and a pad lights up at each section. Wide screens only (1280 px and up).
+  - **Reading progress:** an ECG line along the top of the screen draws as you scroll and beats at the end.
+  - **Heading decode:** section headings appear from red signal noise (English and Turkish; Arabic letters join, so Arabic keeps the fade).
+  - **Card glow:** on a computer, project cards glow and tilt slightly where the mouse is.
+  - **Page transitions:** the new page wipes in behind a glowing red edge (Chrome, Edge and Safari; other browsers just open the page).
 - All animation styles are at the end of `src/styles/global.css`. Visitors who turn on "reduce motion" in their phone or computer settings see the site without animation.
 
 ---
