@@ -44,7 +44,7 @@ const pins = Array.from({ length: 6 }, (_, i) => 1100 + i * 15);
   aria-hidden="true"
 >
   <svg
-    class="absolute inset-0 h-full w-full"
+    class="board-layer absolute inset-0 h-full w-full"
     viewBox="0 0 1440 720"
     preserveAspectRatio="xMaxYMid slice"
     focusable="false"
@@ -87,6 +87,40 @@ const pins = Array.from({ length: 6 }, (_, i) => 1100 + i * 15);
       ))}
     </g>
   </svg>
+  <!-- The same board in copper red, shown only in a circle around the mouse (effects.ts) -->
+  <svg
+    class="board-layer board-lit absolute inset-0 h-full w-full"
+    viewBox="0 0 1440 720"
+    preserveAspectRatio="xMaxYMid slice"
+    focusable="false"
+  >
+    <defs>
+      <pattern id={`${uid}-litdots`} width="24" height="24" patternUnits="userSpaceOnUse">
+        <circle cx="12" cy="12" r="1.3" fill="#FF8A98" opacity="0.55"></circle>
+      </pattern>
+    </defs>
+    <rect width="1440" height="720" fill="#D7263D" opacity="0.08"></rect>
+    <rect width="1440" height="720" fill={`url(#${uid}-litdots)`}></rect>
+    <g fill="none" stroke="#F0455A" stroke-width="1.8" stroke-linejoin="round">
+      {traces.map((d) => (
+        <path d={d} />
+      ))}
+    </g>
+    <g fill="#2a0d12" stroke="#FF8A98" stroke-width="1.8">
+      {pads.map(([x, y]) => (
+        <circle cx={x} cy={y} r="4.5" />
+      ))}
+    </g>
+    <g stroke="#F0455A" stroke-width="1.8">
+      <rect x="1086" y="388" width="96" height="62" rx="4" fill="#1d0b0e"></rect>
+      {pins.map((x) => (
+        <line x1={x} y1="378" x2={x} y2="388" />
+      ))}
+      {pins.map((x) => (
+        <line x1={x} y1="450" x2={x} y2="460" />
+      ))}
+    </g>
+  </svg>
 </div>
 
 <style>
@@ -119,7 +153,32 @@ const pins = Array.from({ length: 6 }, (_, i) => 1100 + i * 15);
       stroke-dashoffset: 0;
     }
   }
+  /* Mouse effects (effects.ts sets --cx/--cy and --px/--py) */
+  .board-layer {
+    scale: 1.03;
+    translate: var(--px, 0px) var(--py, 0px);
+    transition: translate 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .board-lit {
+    opacity: 0;
+    transition:
+      opacity 0.4s,
+      translate 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    filter: drop-shadow(0 0 4px rgb(240 69 90 / 0.8));
+    mask-image: radial-gradient(
+      220px circle at var(--cx, 50%) var(--cy, 50%),
+      #000 0%,
+      rgb(0 0 0 / 0.5) 45%,
+      transparent 100%
+    );
+  }
+  .circuit-backdrop.is-lit .board-lit {
+    opacity: 1;
+  }
   @media (prefers-reduced-motion: reduce) {
+    .board-lit {
+      display: none;
+    }
     .circuit-signal {
       animation: none;
       opacity: 0;

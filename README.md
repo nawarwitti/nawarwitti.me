@@ -304,6 +304,10 @@ GitHub rebuilds and publishes the site automatically in about 1–2 minutes (wat
   - **Reading progress:** an ECG line along the top of the screen draws as you scroll and beats at the end.
   - **Heading decode:** section headings appear from red signal noise (English and Turkish; Arabic letters join, so Arabic keeps the fade).
   - **Card glow:** on a computer, project cards glow and tilt slightly where the mouse is.
+  - **Mouse trail:** a glowing red signal line follows the mouse and fades out.
+  - **Circuit flashlight:** on dark sections the circuit board lights up red around the mouse and drifts slightly (parallax).
+  - **Magnetic buttons:** the main buttons are pulled a little towards the mouse.
+  - Mouse effects run only on computers with a mouse, never on phones.
   - **Page transitions:** the new page wipes in behind a glowing red edge (Chrome, Edge and Safari; other browsers just open the page).
 - All animation styles are at the end of `src/styles/global.css`. Visitors who turn on "reduce motion" in their phone or computer settings see the site without animation.
 

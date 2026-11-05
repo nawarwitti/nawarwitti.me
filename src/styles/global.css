@@ -471,3 +471,30 @@ html[dir='rtl']::view-transition-new(root) {
     transform: scale(0.97);
   }
 }
+
+/* 6. Mouse trail canvas (drawn by effects.ts, computers only) */
+.mouse-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 70;
+  pointer-events: none;
+}
+@media print {
+  .mouse-trail,
+  .read-progress {
+    display: none !important;
+  }
+}
+
+/* 7. Magnetic buttons: pulled towards the mouse */
+.magnetic {
+  transform: translate(var(--gx, 0px), var(--gy, 0px));
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+    translate 0.2s,
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}

@@ -178,3 +178,114 @@ if (!reduced && finePointer) {
     });
   });
 }
+
+/* ---- 5: mouse: a glowing signal trail follows the pointer --------------------------- */
+
+if (!reduced && finePointer) {
+  const canvas = document.createElement('canvas');
+  canvas.className = 'mouse-trail';
+  canvas.setAttribute('aria-hidden', 'true');
+  document.body.append(canvas);
+  const ctx = canvas.getContext('2d');
+  const LIFE = 420; // ms a point stays on screen
+  const points: { x: number; y: number; t: number }[] = [];
+  let running = false;
+
+  const resize = () => {
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    canvas.width = innerWidth * dpr;
+    canvas.height = innerHeight * dpr;
+    ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  resize();
+  addEventListener('resize', resize, { passive: true });
+
+  const draw = () => {
+    if (!ctx) return;
+    const now = performance.now();
+    while (points.length && now - points[0].t > LIFE) points.shift();
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    if (points.length < 2) {
+      running = false;
+      return;
+    }
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    for (let i = 1; i < points.length; i++) {
+      const a = points[i - 1];
+      const b = points[i];
+      const life = 1 - (now - b.t) / LIFE; // 1 = newest
+      const k = (i / points.length) * life;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = `rgba(240, 69, 90, ${(k * 0.9).toFixed(3)})`;
+      ctx.lineWidth = 0.6 + k * 3;
+      ctx.shadowColor = 'rgba(255, 138, 152, 0.9)';
+      ctx.shadowBlur = 10 * k;
+      ctx.stroke();
+    }
+    requestAnimationFrame(draw);
+  };
+
+  addEventListener(
+    'pointermove',
+    (e) => {
+      if (e.pointerType !== 'mouse') return;
+      points.push({ x: e.clientX, y: e.clientY, t: performance.now() });
+      if (points.length > 60) points.shift();
+      if (!running) {
+        running = true;
+        requestAnimationFrame(draw);
+      }
+    },
+    { passive: true },
+  );
+}
+
+/* ---- 6: mouse: dark sections light up the circuit board under the pointer ----------- */
+
+if (!reduced && finePointer) {
+  document.querySelectorAll<HTMLElement>('.circuit-backdrop').forEach((board) => {
+    const section = board.parentElement;
+    if (!section) return;
+    const rtl = document.documentElement.dir === 'rtl'; // the board is mirrored in RTL
+    section.addEventListener('pointermove', (e) => {
+      const r = board.getBoundingClientRect();
+      const x = rtl ? r.right - e.clientX : e.clientX - r.left;
+      const y = e.clientY - r.top;
+      board.style.setProperty('--cx', `${x}px`);
+      board.style.setProperty('--cy', `${y}px`);
+      // Parallax: the board drifts a little against the pointer.
+      board.style.setProperty('--px', `${((0.5 - x / r.width) * 18).toFixed(1)}px`);
+      board.style.setProperty('--py', `${((0.5 - y / r.height) * 12).toFixed(1)}px`);
+      board.classList.add('is-lit');
+    });
+    section.addEventListener('pointerleave', () => {
+      board.classList.remove('is-lit');
+      board.style.setProperty('--px', '0px');
+      board.style.setProperty('--py', '0px');
+    });
+  });
+}
+
+/* ---- 7: mouse: buttons are pulled a little towards the pointer ---------------------- */
+
+if (!reduced && finePointer) {
+  document
+    .querySelectorAll<HTMLElement>('.btn-primary, .btn-outline-dark, .btn-outline-light')
+    .forEach((btn) => {
+      btn.classList.add('magnetic');
+      btn.addEventListener('pointermove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        btn.style.setProperty('--gx', `${(dx * 0.22).toFixed(1)}px`);
+        btn.style.setProperty('--gy', `${(dy * 0.32).toFixed(1)}px`);
+      });
+      btn.addEventListener('pointerleave', () => {
+        btn.style.setProperty('--gx', '0px');
+        btn.style.setProperty('--gy', '0px');
+      });
+    });
+}
