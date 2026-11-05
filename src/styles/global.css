@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './font-fallbacks.css';
 
 /* "Carbon and pulse" design tokens (plan §6.1) */
 @theme {
@@ -25,9 +26,9 @@
   --color-pulse-tint: #fbe9eb;
   --color-pulse-deep: #8f1626;
 
-  --font-serif: 'Source Serif 4', Georgia, serif;
-  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --font-serif: 'Source Serif 4', 'Source Serif 4 Fallback', Georgia, serif;
+  --font-sans: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, Consolas, monospace;
 }
 
 @layer base {
@@ -54,9 +55,9 @@
   /* Arabic: Arabic-script fonts (Latin text like part numbers still uses the Latin fonts),
      no letter-spacing (it breaks joined Arabic letters), slightly taller lines. */
   html[lang='ar'] {
-    --font-serif: 'Noto Naskh Arabic', 'Source Serif 4', Georgia, serif;
-    --font-sans: 'IBM Plex Sans Arabic', Inter, system-ui, sans-serif;
-    --font-mono: 'IBM Plex Sans Arabic', 'JetBrains Mono', ui-monospace, monospace;
+    --font-serif: 'Noto Naskh Arabic', 'Noto Naskh Arabic Fallback', 'Source Serif 4', serif;
+    --font-sans: 'IBM Plex Sans Arabic', 'IBM Plex Sans Arabic Fallback', 'Inter Variable', sans-serif;
+    --font-mono: 'IBM Plex Sans Arabic', 'IBM Plex Sans Arabic Fallback', 'JetBrains Mono', monospace;
   }
   html[lang='ar'] body {
     line-height: 1.7;

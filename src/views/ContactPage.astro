@@ -11,9 +11,25 @@ const ui = await getUi(locale);
 const profile = await getProfile(locale);
 // Phone number is intentionally not published (privacy).
 const rows = [
-  { label: ui.contact.emailLabel, value: profile.email, href: `mailto:${profile.email}` },
-  { label: ui.contact.linkedinLabel, value: 'linkedin.com/in/nawar-witti', href: profile.linkedin },
-  { label: ui.contact.cvLabel, value: 'cv.pdf', href: profile.cv, download: true },
+  {
+    label: ui.contact.emailLabel,
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    click: 'email',
+  },
+  {
+    label: ui.contact.linkedinLabel,
+    value: 'linkedin.com/in/nawar-witti',
+    href: profile.linkedin,
+    click: 'linkedin',
+  },
+  {
+    label: ui.contact.cvLabel,
+    value: 'cv.pdf',
+    href: profile.cv,
+    download: true,
+    click: 'cv-download',
+  },
   { label: ui.contact.locationLabel, value: profile.location },
 ];
 ---
@@ -29,6 +45,7 @@ const rows = [
             {r.href ? (
               <a
                 href={r.href}
+                data-goatcounter-click={r.click}
                 class="link-light"
                 download={r.download ? '' : undefined}
                 rel={r.href.startsWith('http') ? 'me noopener' : undefined}

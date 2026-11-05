@@ -1,7 +1,30 @@
 ---
+// Fonts are self-hosted (no requests to Google). Only the weights and character sets the site
+// uses are declared: Latin + Latin-extended (Turkish) for the Latin fonts, Arabic + Latin for the
+// Arabic fonts. The browser downloads a file only when a page actually uses it.
+import '../styles/fonts.css'; // Inter
+import '@fontsource/source-serif-4/latin-600.css';
+import '@fontsource/source-serif-4/latin-ext-600.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-ext-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
+import '@fontsource/jetbrains-mono/latin-ext-500.css';
+import '@fontsource/ibm-plex-sans-arabic/arabic-400.css';
+import '@fontsource/ibm-plex-sans-arabic/latin-400.css';
+import '@fontsource/ibm-plex-sans-arabic/arabic-500.css';
+import '@fontsource/ibm-plex-sans-arabic/latin-500.css';
+import '@fontsource/ibm-plex-sans-arabic/arabic-600.css';
+import '@fontsource/ibm-plex-sans-arabic/latin-600.css';
+import '@fontsource/noto-naskh-arabic/arabic-600.css';
+import '@fontsource/noto-naskh-arabic/latin-600.css';
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import serifLatin from '@fontsource/source-serif-4/files/source-serif-4-latin-600-normal.woff2?url';
+import plexArabic from '@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2?url';
+import naskhArabic from '@fontsource/noto-naskh-arabic/files/noto-naskh-arabic-arabic-600-normal.woff2?url';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { GOATCOUNTER_CODE } from '../site.config';
 import { getProfile, getUi, isRtl, LOCALES, switchLocale, type Locale } from '../lib/content';
 
 interface Props {
@@ -15,6 +38,8 @@ const { title, description, locale, image = '/og-image.png', type = 'website' } 
 
 const ui = await getUi(locale);
 const profile = await getProfile(locale);
+
+const preloadFonts = isRtl(locale) ? [plexArabic, naskhArabic] : [interLatin, serifLatin];
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
@@ -72,20 +97,21 @@ const person = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap"
-    />
-    {locale === 'ar' && (
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@600&display=swap"
-      />
-    )}
+    {/* Preload the fonts the first screen needs, so the headline doesn't swap fonts late. */}
+    {preloadFonts.map((href) => (
+      <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />
+    ))}
 
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
+    {/* Visitor statistics (GoatCounter: no cookies, no personal data). Off when no code is set. */}
+    {GOATCOUNTER_CODE && (
+      <script
+        is:inline
+        async
+        data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`}
+        src="https://gc.zgo.at/count.js"
+      ></script>
+    )}
     <!-- Marks JS as available before paint, so scroll-reveal hides only when it can show again -->
     <script is:inline>
       document.documentElement.classList.add('js');

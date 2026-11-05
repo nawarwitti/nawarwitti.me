@@ -31,6 +31,7 @@ Other useful commands:
 | `npm run preview` | Shows the built `dist/` site, exactly as visitors will see it.  |
 | `npm run check`   | Checks the content files and code for mistakes.                 |
 | `npm run og`      | Re-creates `public/og-image.png` (the picture shown when the link is shared). |
+| `npm run font-fallbacks` | Re-creates the size-matched fallback fonts (only if you change fonts). |
 
 > Tip: always run `npm run build` before you push. If it says **Complete!**, it is safe to publish.
 
@@ -155,8 +156,8 @@ All "Download CV" buttons (English and Turkish) use this file automatically.
 
 ### Your photo (About page)
 
-Your photo is `public/photo.jpg` and it is shown on the **About** page only (not on Home).
-To change it, replace `public/photo.jpg` with a new portrait photo (4:5 shape, for example 800 × 1000 pixels, under 300 KB).
+Your photo is `public/photo.webp` and it is shown on the **About** page only (not on Home).
+To change it, save a new portrait photo (4:5 shape, about 600 × 750 pixels, under 100 KB) in `public/` and put its name in `"photo": { "src": "/your-file.webp" }` in the three profile files. `.jpg` also works; `.webp` is smaller.
 To remove it, delete the `"photo": { ... }` block from `src/content/profile/en.json`, `tr.json` and `ar.json`.
 
 ### Project images
@@ -302,7 +303,28 @@ GitHub rebuilds and publishes the site automatically in about 1–2 minutes (wat
 
 ---
 
-## 10. Languages
+## 10. Visitor statistics (GoatCounter)
+
+The site is ready for **GoatCounter**: free for personal sites, no cookies and no personal data, so no cookie banner is needed.
+
+1. Sign up at https://www.goatcounter.com/signup and choose a code, for example `nawarwitti`.
+2. Open `src/site.config.ts` and put the code in: `export const GOATCOUNTER_CODE = 'nawarwitti';`
+3. Run `npm run build`, then `git add .`, `git commit -m "Turn on statistics"`, `git push`.
+4. See your visitors at `https://nawarwitti.goatcounter.com`: pages, languages, countries, where visitors came from (LinkedIn, Google…).
+
+Clicks on **Download CV**, **LinkedIn** and **email** are counted too: they show up as `cv-download`, `linkedin` and `email` in the dashboard.
+Leave the code empty (`''`) to turn statistics off.
+
+---
+
+## 11. Speed (Lighthouse)
+
+Fonts are served from the site itself (no Google Fonts), only the Latin, Turkish and Arabic character sets are loaded, and system fonts are size-matched to the web fonts so text does not jump while loading (`src/styles/font-fallbacks.css`, made by `npm run font-fallbacks`).
+To test: open the live site in Chrome → F12 → **Lighthouse** → Analyze. Keep new images small (under ~150 KB, `.webp` is best).
+
+---
+
+## 12. Languages
 
 - English pages: `https://nawarwitti.me/...`
 - Turkish pages: `https://nawarwitti.me/tr/...`
@@ -324,6 +346,7 @@ src/components/         Hero, QuickFacts, ProjectCard, Timeline, SkillGroup, Con
 src/layouts/            Page frame: <head>, SEO tags, header, footer
 src/pages/              One small file per URL (English), src/pages/tr/ (Turkish), src/pages/ar/ (Arabic)
 src/views/              The page templates shared by both languages
+src/site.config.ts      Site settings (visitor statistics code)
 src/styles/global.css   Colours and fonts ("Carbon and pulse" design tokens)
 .github/workflows/      Automatic deploy to GitHub Pages
 scripts/                Helper scripts (share image)

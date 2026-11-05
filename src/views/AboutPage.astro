@@ -29,7 +29,7 @@ const photo = profile.photo?.src ? profile.photo : undefined;
 
   <section class="container-page flex flex-wrap items-start gap-12 pt-14">
     {photo && (
-      <div class="flex flex-[1_1_260px] justify-center lg:order-last lg:justify-start" data-reveal>
+      <div class="flex flex-[1_1_260px] justify-center lg:order-last lg:justify-start">
         <figure class="group relative w-full max-w-[300px]">
           <span
             class="absolute inset-0 translate-x-3 translate-y-3 rounded-[12px] border-2 border-pulse transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4 rtl:-translate-x-3 rtl:group-hover:-translate-x-4 motion-reduce:transition-none"
@@ -41,6 +41,7 @@ const photo = profile.photo?.src ? profile.photo : undefined;
             alt={photo.alt}
             width={300}
             height={375}
+            loading="eager"
             class="relative aspect-[4/5] h-auto w-full rounded-[12px]"
           />
         </figure>

@@ -43,10 +43,16 @@ const words = profile.pitch.split(/\s+/);
         <a href={localePath(locale, '/projects/')} class="btn-primary">
           {ui.home.buttons.projects}
         </a>
-        <a href={profile.cv} download class="btn-outline-dark">
+        <a href={profile.cv} download class="btn-outline-dark" data-goatcounter-click="cv-download">
           {ui.home.buttons.cv}
         </a>
-        <a href={profile.linkedin} rel="me noopener" target="_blank" class="btn-outline-dark">
+        <a
+          href={profile.linkedin}
+          rel="me noopener"
+          target="_blank"
+          class="btn-outline-dark"
+          data-goatcounter-click="linkedin"
+        >
           {ui.home.buttons.linkedin}
         </a>
       </div>

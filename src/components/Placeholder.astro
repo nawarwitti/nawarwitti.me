@@ -32,7 +32,8 @@ const {
     width={width}
     height={height}
     loading={loading}
-    decoding="async"
+    fetchpriority={loading === 'eager' ? 'high' : undefined}
+    decoding={loading === 'eager' ? 'sync' : 'async'}
     class:list={[fit === 'contain' ? 'bg-card object-contain p-2' : 'object-cover', className]}
   />
 ) : (

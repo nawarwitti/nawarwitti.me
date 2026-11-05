@@ -6,7 +6,7 @@ Until a picture is added, the site shows a dashed box with a label, so nothing l
 ## 1. Most important (before sharing the link)
 
 - [x] **Real CV** — added as `public/cv.pdf` (FlowCV export without the phone number).
-- [x] **Photo** — shown on the About page only (`public/photo.jpg`).
+- [x] **Photo** — shown on the About page only (`public/photo.webp`).
 - [x] **Şam Şerif title confirmed:** "General Manager & Partner" (used on the site).
 - [ ] **Match the title in the CV and on LinkedIn:** the CV says "Partner & Business Development Manager" and LinkedIn says "General Manager". Change both to "General Manager & Partner".
 - [ ] **Proofread the Turkish version** (`/tr/`). The Turkish text was translated from the English plan — check it reads naturally to you, especially technical terms and job titles (`src/content/*/tr.json`, `src/content/projects/tr/`).
@@ -61,11 +61,13 @@ Put each image once in `public/`, then add its `src:` line in **both** language 
 
 - [ ] Better share image: `public/og-image.png` was generated automatically (black, name, red pulse line). You can replace it with your own 1200 × 630 image, or edit and run `npm run og`.
 - [ ] After going live: add `https://nawarwitti.me` to LinkedIn and to the CV header.
-- [ ] Run a Lighthouse test on the live site (Chrome → F12 → **Lighthouse**). Target: 95+ for Performance, Accessibility and SEO. Real photos should be compressed (under ~400 KB each) to keep the score high.
+- [x] Lighthouse (local, built site): 100 / 100 / 100 / 100 on every page tested, mobile and desktop; About page on mobile 98–99 (photo). Re-test on the live site after big changes.
+- [x] Fonts self-hosted (no Google Fonts).
+- [ ] **Turn on visitor statistics:** sign up at goatcounter.com and put the code in `src/site.config.ts` (README section 10).
 
 ## 5. Phase 2 (later, from the plan)
 
-- [x] Turkish version at `/tr/` (README section 10).
+- [x] Turkish version at `/tr/` (README section 12).
 - [x] Arabic version at `/ar/`.
 - [ ] `/notes` section for short technical write-ups or explainer videos.
 - [ ] Optional full-dark theme toggle.

@@ -17,15 +17,29 @@ const Heading = headingLevel;
   class="on-dark relative isolate overflow-hidden border-t border-carbon-line bg-carbon text-on-dark"
 >
   <CircuitBackdrop variant="band" />
-  <div class="container-page relative pt-20 pb-16 sm:pt-24" data-stagger>
+  <!-- At the top of the Contact page (h1) it shows at once; lower on a page it fades in. -->
+  <div
+    class="container-page relative pt-20 pb-16 sm:pt-24"
+    data-stagger={headingLevel === 'h2' ? '' : undefined}
+  >
     <PulseLine variant="small" sweep class="pulse-loop" />
     <Heading class="mt-5 text-[38px] leading-[1.1] sm:text-[52px]">{ui.contact.heading}</Heading>
     <p class="mt-4 max-w-[560px] text-lg leading-relaxed text-on-dark-2">{ui.contact.text}</p>
     <div class="mt-8 flex flex-wrap gap-3.5">
-      <a href={`mailto:${profile.email}`} class="btn-primary break-all">
+      <a
+        href={`mailto:${profile.email}`}
+        class="btn-primary break-all"
+        data-goatcounter-click="email"
+      >
         {profile.email}
       </a>
-      <a href={profile.linkedin} rel="me noopener" target="_blank" class="btn-outline-dark">
+      <a
+        href={profile.linkedin}
+        rel="me noopener"
+        target="_blank"
+        class="btn-outline-dark"
+        data-goatcounter-click="linkedin"
+      >
         {ui.contact.linkedin}
       </a>
     </div>
